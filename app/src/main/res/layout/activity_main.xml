@@ -9,27 +9,38 @@
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_weight="1"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:layout_weight="1" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        >
-
-        <TextView
-            android:id="@+id/txtViewClient"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/name" />
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/editTextNome"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editTextNome"
-            android:layout_alignParentLeft="true"/>
-    </RelativeLayout>
+            android:layout_marginTop="10dp"
+            android:hint="@string/name" />
+
+        <EditText
+            android:id="@+id/editTextDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/Information"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="@string/Phone"
+            android:inputType="phone" />
+    </LinearLayout>
 
 </LinearLayout>

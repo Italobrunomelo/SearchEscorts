@@ -3,4 +3,10 @@
     <string name="name">Name</string>
     <string name="Information">Information</string>
     <string name="Phone">Contact</string>
+    <string name="Search">Search</string>
+    <string name="Location">Location</string>
+    <string name="Save">Save</string>
+    <string name="Disponível">Disponível</string>
+    <string name="uploadPhoto">Upload Photo</string>
+    <string name="ButtonAdd">+</string>
 </resources>

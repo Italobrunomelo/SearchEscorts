@@ -8,5 +8,7 @@
     <string name="Save">Save</string>
     <string name="Disponível">Disponível</string>
     <string name="uploadPhoto">Upload Photo</string>
-    <string name="ButtonAdd">+</string>
+    <string name="buttonLogin">Login</string>
+    <string name="InformationActivityMain">Acompanhates em apenas um clique!</string>
+    <string name="CompanionsNew">Seja uma Acompanhate</string>
 </resources>

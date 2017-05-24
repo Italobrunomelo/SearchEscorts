@@ -1,26 +1,13 @@
 package com.mobileprogramming.searchcompanions.fragments;
 
-import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
 
-import com.mobileprogramming.searchcompanions.Companions;
-import com.mobileprogramming.searchcompanions.InformationActivity;
 import com.mobileprogramming.searchcompanions.R;
-import com.mobileprogramming.searchcompanions.dao.CompanionsDAO;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by italo on 22/05/2017.
@@ -32,10 +19,26 @@ public class FragmentMain extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        /*
+        *AÇÃO DO BOTAO LOGIN
+        *
+        Button buttonLogin = (Button) view.findViewById(R.id.buttonLogin);
+
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getActivity(), ActivityCompanionsRegister.class);
+                startActivity(it);
+            }
+        });*/
+
+        return view;
+    }
+}
+
         /*
         *Pegar Referência  do ListView e Button
-
-
             //ListView X PageView-> lvCompanions = (ListView) view.findViewById(R.id.listViewCompanions);
 
             Button buttonAdd = (Button) view.findViewById(R.id.buttonAdd);
@@ -54,18 +57,18 @@ public class FragmentMain extends Fragment {
         /*
         *COMPORTAMENTO DO BOTÃO buttonAdd
 
-            buttonAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                buttonAdd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-                    if(isLandScape()){
-                        loadCompanionsForm(null);
-                    }else{
-                        Intent it = new Intent(getActivity(), InformationActivity.class);
-                        startActivity(it);
+                        if(isLandScape()){
+                            loadCompanionsForm(null);
+                        }else{
+                            Intent it = new Intent(getActivity(), ActivityCompanionsRegister.class);
+                            startActivity(it);
+                        }
                     }
-                }
-            });
+                });
             return view;
         }
 
@@ -82,13 +85,13 @@ public class FragmentMain extends Fragment {
         private void loadCompanionsForm(Companions companions) {
             FragmentManager manager = getActivity().getSupportFragmentManager();
             FragmentTransaction tx = manager.beginTransaction();
-            Fragment fragment = new com.mobileprogramming.searchcompanions.fragments.CompanionsListFragment();
+            Fragment fragment = new com.mobileprogramming.searchcompanions.fragments.FragmentCompanionsInformations();
             if(companions != null){
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("companions", companions);
                 fragment.setArguments(bundle);
             }
-            tx.replace(R.id.fragment_companions_list, fragment);
+            tx.replace(R.id.fragment_companions_Informations, fragment);
             tx.addToBackStack(null);
             tx.commit();
         }
@@ -118,6 +121,3 @@ public class FragmentMain extends Fragment {
     }
 
 }*/
-        return view;
-    }
-}

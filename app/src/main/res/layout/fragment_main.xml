@@ -17,39 +17,47 @@
             android:layout_gravity="center"
             android:text="@string/InformationActivityMain" />
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/imageButtonEnter"
+            android:src="@drawable/companions"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginLeft="20dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textViewCompanionsNew"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:clickable="true"
             android:text="@string/CompanionsNew" />
 
         <ImageView
+            android:id="@+id/imageViewCompanionsNew"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/imageViewCompanionsNew"
             android:layout_gravity="center"
             android:src="@drawable/companions" />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <Button
+                android:id="@+id/buttonLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
-                android:text="@string/buttonLogin"
-                android:id="@+id/buttonLogin"/>
+                android:text="@string/buttonLogin" />
 
         </FrameLayout>
 

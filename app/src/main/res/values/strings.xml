@@ -9,6 +9,7 @@
     <string name="Disponível">Disponível</string>
     <string name="uploadPhoto">Upload Photo</string>
     <string name="buttonLogin">Login</string>
-    <string name="InformationActivityMain">Acompanhates em apenas um clique!</string>
-    <string name="CompanionsNew">Seja uma Acompanhate</string>
+    <string name="InformationActivityMain">Companions in a click!</string>
+    <string name="CompanionsNew">Be a companions</string>
+    <string name="ButtonAdd">Be a companions</string>
 </resources>

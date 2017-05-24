@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.mobileprogramming.searchcompanions.Companions;
+import com.mobileprogramming.searchcompanions.Escorts;
 import com.mobileprogramming.searchcompanions.R;
-import com.mobileprogramming.searchcompanions.dao.CompanionsDAO;
+import com.mobileprogramming.searchcompanions.dao.EscortsDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +23,16 @@ import java.util.List;
  * Created by italo on 17/05/2017.
  */
 
-public class FragmentCompanionsInformations extends Fragment {
+public class FragmentEscortsInformations extends Fragment {
 
-    List<Companions> companions = new ArrayList<Companions>();
+    List<Escorts> companions = new ArrayList<Escorts>();
     private ArrayAdapter<String> adapter;
     private ListView lvCompanions;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_companions_Informations, container, false );
+        View view = inflater.inflate(R.layout.fragment_escorts_informations, container, false );
         /*
         *Pegar Referência  do ListView e Button
         */
@@ -47,7 +47,7 @@ public class FragmentCompanionsInformations extends Fragment {
         //ListView X PageView-> lvCompanions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                loadCompanionsForm(companions.get(position));
+                loadCompanionsForm(escorts.get(position));
             }
         });
         */
@@ -62,7 +62,7 @@ public class FragmentCompanionsInformations extends Fragment {
                 if(isLandScape()){
                     loadCompanionsForm(null);
                 }else{
-                    Intent it = new Intent(getActivity(), ActivityCompanionsRegister.class);
+                    Intent it = new Intent(getActivity(), ActivityEscortsRegister.class);
                     startActivity(it);
                 }
             }
@@ -80,13 +80,13 @@ public class FragmentCompanionsInformations extends Fragment {
         return false;
     }
 
-    private void loadCompanionsForm(Companions companions) {
+    private void loadCompanionsForm(Escorts escorts) {
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction tx = manager.beginTransaction();
-        Fragment fragment = new FragmentCompanionsInformations();
-        if(companions != null){
+        Fragment fragment = new FragmentEscortsInformations();
+        if(escorts != null){
             Bundle bundle = new Bundle();
-            bundle.putSerializable("companions", companions);
+            bundle.putSerializable("escorts", escorts);
             fragment.setArguments(bundle);
         }
         tx.replace(R.id.fragment_companions_Informations, fragment);
@@ -96,13 +96,13 @@ public class FragmentCompanionsInformations extends Fragment {
 
     public void loadCompanions() {
 
-        CompanionsDAO dao = new CompanionsDAO(getActivity());
+        EscortsDAO dao = new EscortsDAO(getActivity());
         companions = dao.getAllCompanions();
 
         List<String> companionsNames = new ArrayList<String>();
 
-        for (Companions companions : this.companions) {
-            companionsNames.add(companions.getmName());
+        for (Escorts escorts : this.companions) {
+            companionsNames.add(escorts.getmName());
         }
 
         adapter = new ArrayAdapter<String>(getActivity(),

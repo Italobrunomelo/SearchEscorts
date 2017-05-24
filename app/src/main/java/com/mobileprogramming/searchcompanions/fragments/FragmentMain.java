@@ -28,7 +28,7 @@ public class FragmentMain extends Fragment {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getActivity(), ActivityCompanionsRegister.class);
+                Intent it = new Intent(getActivity(), ActivityEscortsRegister.class);
                 startActivity(it);
             }
         });*/
@@ -49,7 +49,7 @@ public class FragmentMain extends Fragment {
         //ListView X PageView-> lvCompanions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                loadCompanionsForm(companions.get(position));
+                loadCompanionsForm(escorts.get(position));
             }
         });
         */
@@ -64,7 +64,7 @@ public class FragmentMain extends Fragment {
                         if(isLandScape()){
                             loadCompanionsForm(null);
                         }else{
-                            Intent it = new Intent(getActivity(), ActivityCompanionsRegister.class);
+                            Intent it = new Intent(getActivity(), ActivityEscortsRegister.class);
                             startActivity(it);
                         }
                     }
@@ -82,29 +82,29 @@ public class FragmentMain extends Fragment {
             return false;
         }
 
-        private void loadCompanionsForm(Companions companions) {
+        private void loadCompanionsForm(Escorts escorts) {
             FragmentManager manager = getActivity().getSupportFragmentManager();
             FragmentTransaction tx = manager.beginTransaction();
-            Fragment fragment = new com.mobileprogramming.searchcompanions.fragments.FragmentCompanionsInformations();
-            if(companions != null){
+            Fragment fragment = new com.mobileprogramming.searchcompanions.fragments.FragmentEscortsInformations();
+            if(escorts != null){
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("companions", companions);
+                bundle.putSerializable("escorts", escorts);
                 fragment.setArguments(bundle);
             }
-            tx.replace(R.id.fragment_companions_Informations, fragment);
+            tx.replace(R.id.fragment_escorts_informations, fragment);
             tx.addToBackStack(null);
             tx.commit();
         }
 
         public void loadCompanions() {
 
-            CompanionsDAO dao = new CompanionsDAO(getActivity());
-            companions = dao.getAllCompanions();
+            EscortsDAO dao = new EscortsDAO(getActivity());
+            escorts = dao.getAllCompanions();
 
             List<String> companionsNames = new ArrayList<String>();
 
-            for (Companions companions : this.companions) {
-                companionsNames.add(companions.getmName());
+            for (Escorts escorts : this.escorts) {
+                companionsNames.add(escorts.getmName());
             }
 
             adapter = new ArrayAdapter<String>(getActivity(),

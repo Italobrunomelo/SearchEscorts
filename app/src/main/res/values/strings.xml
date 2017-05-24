@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">SearchCompanions</string>
+    <string name="app_name">SearchEscorts</string>
     <string name="name">Name</string>
     <string name="Information">Information</string>
     <string name="Phone">Contact</string>
     <string name="Search">Search</string>
     <string name="Location">Location</string>
     <string name="Save">Save</string>
-    <string name="Disponível">Disponível</string>
+    <string name="Disponível">Available</string>
     <string name="uploadPhoto">Upload Photo</string>
     <string name="buttonLogin">Login</string>
-    <string name="InformationActivityMain">Companions in a click!</string>
-    <string name="CompanionsNew">Be a companions</string>
-    <string name="ButtonAdd">Be a companions</string>
+    <string name="InformationActivityMain">Escorts in a click!</string>
+    <string name="CompanionsNew">Be a escorts</string>
+    <string name="ButtonAdd">Be a escorts</string>
 </resources>

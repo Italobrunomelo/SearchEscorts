@@ -3,11 +3,11 @@ package com.mobileprogramming.searchcompanions;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ActivityCompanionsRegister extends AppCompatActivity {
+public class ActivityEscortsRegister extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_companions_register);
+        setContentView(R.layout.activity_escorts_register);
     }
 }

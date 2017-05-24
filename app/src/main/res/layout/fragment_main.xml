@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:id="@+id/imageButtonEnter"
-            android:src="@drawable/companions"/>
+            android:src="@drawable/escorts"/>
 
     </LinearLayout>
 
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/companions" />
+            android:src="@drawable/escorts" />
 
         <FrameLayout
             android:layout_width="match_parent"

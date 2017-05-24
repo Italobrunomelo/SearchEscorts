@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by italo on 17/05/2017.
  */
 
-public class Companions implements Serializable {
+public class Escorts implements Serializable {
 
     private String mName;
     private String mInformation;

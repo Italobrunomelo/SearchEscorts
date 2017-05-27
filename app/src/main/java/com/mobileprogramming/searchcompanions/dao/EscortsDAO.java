@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.mobileprogramming.searchcompanions.Escorts;
+import com.mobileprogramming.searchcompanions.model.Escorts;
 
 import java.util.ArrayList;
 import java.util.List;

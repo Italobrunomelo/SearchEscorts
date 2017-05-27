@@ -1,4 +1,4 @@
-package com.mobileprogramming.searchcompanions;
+package com.mobileprogramming.searchcompanions.model;
 
 import java.io.Serializable;
 
@@ -52,5 +52,10 @@ public class Escorts implements Serializable {
 
     public void setmStatus(String mStatus) {
         this.mStatus = mStatus;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

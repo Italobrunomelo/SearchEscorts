@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.mobileprogramming.searchcompanions.Escorts;
+import com.mobileprogramming.searchcompanions.model.Escorts;
 import com.mobileprogramming.searchcompanions.R;
 import com.mobileprogramming.searchcompanions.dao.EscortsDAO;
 

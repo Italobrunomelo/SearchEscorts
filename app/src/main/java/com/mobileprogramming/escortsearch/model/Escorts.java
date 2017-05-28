@@ -1,4 +1,4 @@
-package com.mobileprogramming.searchcompanions.model;
+package com.mobileprogramming.escortsearch.model;
 
 import java.io.Serializable;
 
@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class Escorts implements Serializable {
 
     private String mName;
+    private String mAge;
     private String mInformation;
     private String mContact;
     private String mLocation;
@@ -20,6 +21,14 @@ public class Escorts implements Serializable {
 
     public void setmName(String mName) {
         this.mName = mName;
+    }
+
+    public String getmAge() {
+        return mAge;
+    }
+
+    public void setmAge(String mAge) {
+        this.mAge = mAge;
     }
 
     public String getmInformation() {
@@ -58,4 +67,5 @@ public class Escorts implements Serializable {
     public String toString() {
         return super.toString();
     }
+
 }

@@ -1,9 +1,10 @@
-package com.mobileprogramming.searchcompanions;
+package com.mobileprogramming.escortsearch;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.mobileprogramming.searchcompanions.fragments.FragmentEscortsInformations;
+import com.mobileprogramming.escortsearch.fragments.FragmentEscortsInformations;
+import com.mobileprogramming.escortsearch.fragments.FragmentMain;
 
 /**
  * Created by italo on 23/05/2017.
@@ -11,13 +12,12 @@ import com.mobileprogramming.searchcompanions.fragments.FragmentEscortsInformati
 
 public class MainActivity extends AppCompatActivity {
 
-    FragmentEscortsInformations fragmentList;
+    FragmentMain fragmentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fragmentList = (FragmentEscortsInformations) getSupportFragmentManager().findFragmentById(R.id.fragment_main);
-
+        fragmentList = (FragmentMain) getSupportFragmentManager().findFragmentById(R.id.fragment_main);
     }
 }

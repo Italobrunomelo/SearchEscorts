@@ -15,14 +15,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/InformationActivityMain" />
+            android:layout_marginTop="10dp"
+            android:text="@string/textViewInformationActivityMain" />
 
         <ImageButton
+            android:id="@+id/imageButtonEnter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/imageButtonEnter"
-            android:src="@drawable/escorts"/>
+            android:src="@drawable/escorts" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewUserNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="20dp"
+                android:onClick="onClick"
+                android:text="@string/textViewUserNew" />
+
+        </FrameLayout>
 
     </LinearLayout>
 
@@ -38,11 +54,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:clickable="true"
-            android:text="@string/CompanionsNew" />
+            android:layout_marginTop="10dp"
+            android:text="@string/textViewCompanionsNew" />
 
-        <ImageView
-            android:id="@+id/imageViewCompanionsNew"
+        <ImageButton
+            android:id="@+id/imageButtonEscortNew"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -52,12 +68,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/buttonLogin"
+            <TextView
+                android:id="@+id/textViewLoginEscort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:text="@string/buttonLogin" />
+                android:layout_gravity="center|bottom"
+                android:layout_marginBottom="20dp"
+                android:onClick="onClick"
+                android:text="@string/textViewLoginEscort" />
 
         </FrameLayout>
 

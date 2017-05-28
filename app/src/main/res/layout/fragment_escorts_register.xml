@@ -18,8 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:linksClickable="true"
-        android:text="@string/uploadPhoto">
+        android:onClick="onClick"
+        android:text="@string/textViewUploadPhoto">
 
     </TextView>
 
@@ -35,51 +35,72 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:checked="true"
-            android:text="@string/Disponível" />
+            android:text="@string/SwitchStatus" />
 
         <EditText
-            android:id="@+id/editTextNome"
+            android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/name" />
+            android:hint="@string/editTextNome" />
 
         <EditText
-            android:id="@+id/editTextDescricao"
+            android:id="@+id/editTextInformation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="@string/Information"
+            android:hint="@string/editTextInformation"
             android:inputType="textMultiLine" />
-
-        <EditText
-            android:id="@+id/editTextPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="@string/Phone"
-            android:inputType="phone" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <EditText
-                android:id="@+id/editTextLocation"
-                android:layout_width="wrap_content"
+                android:id="@+id/editTextPhone"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:hint="@string/Location"
-                android:inputType="textMultiLine" />
+                android:hint="@string/editTextPhone"
+                android:inputType="phone"
+                android:layout_weight="1"/>
 
-            <Button
-                android:id="@+id/buttonSearch"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/editTextAge"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/Search" />
+                android:layout_gravity="end"
+                android:hint="@string/editTextAge"
+                android:inputType="date"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/editTextLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="100dp"
+                    android:hint="@string/editTextLocation"
+                    android:inputType="textMultiLine" />
+
+                <Button
+                    android:id="@+id/buttonLocationEscort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="@string/buttonLocationEscort" />
+            </FrameLayout>
         </LinearLayout>
 
         <FrameLayout
@@ -87,11 +108,12 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/buttonSave"
+                android:id="@+id/buttonSaveEscort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
-                android:text="@string/Save" />
+                android:layout_marginBottom="10dp"
+                android:text="@string/buttonSaveEscort" />
         </FrameLayout>
 
     </LinearLayout>

@@ -26,14 +26,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:hint="@string/name" />
+            android:hint="@string/editTextNome" />
 
         <TextView
             android:id="@+id/editTextDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:hint="@string/Information"
+            android:hint="@string/editTextInformation"
             android:inputType="textMultiLine" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:hint="@string/Location"
+            android:hint="@string/editTextLocation"
             android:inputType="textMultiLine" />
 
         <TextView
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:hint="@string/Phone" />
+            android:hint="@string/editTextPhone" />
 
     </LinearLayout>
 

@@ -1,11 +1,11 @@
-package com.mobileprogramming.searchcompanions.dao;
+package com.mobileprogramming.escortsearch.dao;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.mobileprogramming.searchcompanions.model.Escorts;
+import com.mobileprogramming.escortsearch.model.Escorts;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +22,8 @@ public class EscortsDAO extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE Escorts (name TEXT NOT NULL, information TEXT NOT NULL, " +
-                "contact TEXT NOT NULL, location TEXT NOT NULL, status CHAR NOT NULL);";
+        String sql = "CREATE TABLE Escorts (name TEXT NOT NULL, age TEXT NOT NULL, information TEXT NOT NULL, " +
+                "contact TEXT NOT NULL, location TEXT NOT NULL, status TEXT NOT NULL);";
         db.execSQL(sql);
     }
 
@@ -36,31 +36,33 @@ public class EscortsDAO extends SQLiteOpenHelper {
 
     //INSERT
     public void insert(Escorts escorts){
-        String sql = "INSERT INTO Escorts (name,email,phone) VALUES ('" + escorts.getmName()+"','"+ escorts.getmInformation()+"','"+ escorts.getmContact()+"','"+ escorts.getmLocation()+"','"+ escorts.getmStatus()+"');";
+        String sql = "INSERT INTO Escorts (name,age,information,contact,location,status) " +
+                "VALUES ('" + escorts.getmName()+"','"+ escorts.getmAge()+"','"+ escorts.getmInformation()+"','"+ escorts.getmContact()+"','"+ escorts.getmLocation()+"','"+ escorts.getmStatus()+"');";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(sql);
         db.close();
     }
 
-    //GetAllCompanions
-    public List<Escorts> getAllCompanions(){
+    //GetAllEscort
+    public List<Escorts> getAllEscort(){
         String sql = "SELECT * FROM Escorts;";
         SQLiteDatabase sqLiteDb = getReadableDatabase();
         Cursor cursor = sqLiteDb.rawQuery(sql, null);
-        List<Escorts> companion = new ArrayList<Escorts>();
+        List<Escorts> escort = new ArrayList<Escorts>();
 
         while(cursor.moveToNext()){
             Escorts escorts = new Escorts();
             escorts.setmName(cursor.getString(cursor.getColumnIndex("name")));
+            escorts.setmAge(cursor.getString(cursor.getColumnIndex("age")));
             escorts.setmInformation(cursor.getString(cursor.getColumnIndex("information")));
             escorts.setmContact(cursor.getString(cursor.getColumnIndex("contact")));
             escorts.setmLocation(cursor.getString(cursor.getColumnIndex("location")));
             escorts.setmStatus(cursor.getString(cursor.getColumnIndex("status")));
-            companion.add(escorts);
+            escort.add(escorts);
         }
 
         sqLiteDb.close();
 
-        return companion;
+        return escort;
     }
 }

@@ -1,9 +1,9 @@
-package com.mobileprogramming.searchcompanions;
+package com.mobileprogramming.escortsearch;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.mobileprogramming.searchcompanions.fragments.FragmentEscortsInformations;
+import com.mobileprogramming.escortsearch.fragments.FragmentEscortsInformations;
 
 public class ActivityEscortsInformations extends AppCompatActivity {
 
@@ -13,7 +13,7 @@ public class ActivityEscortsInformations extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escorts_informations);
-        fragmentList = (FragmentEscortsInformations) getSupportFragmentManager().findFragmentById(R.id.fragment_companions_Informations);
+        fragmentList = (FragmentEscortsInformations) getSupportFragmentManager().findFragmentById(R.id.fragment_escorts_informations);
     }
 
     public void loadStudents() {

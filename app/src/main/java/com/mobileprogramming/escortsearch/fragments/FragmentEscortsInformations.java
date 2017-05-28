@@ -1,4 +1,4 @@
-package com.mobileprogramming.searchcompanions.fragments;
+package com.mobileprogramming.escortsearch.fragments;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.mobileprogramming.searchcompanions.model.Escorts;
-import com.mobileprogramming.searchcompanions.R;
-import com.mobileprogramming.searchcompanions.dao.EscortsDAO;
+import com.mobileprogramming.escortsearch.model.Escorts;
+import com.mobileprogramming.escortsearch.R;
+import com.mobileprogramming.escortsearch.dao.EscortsDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class FragmentEscortsInformations extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_escorts_informations, container, false );
+        View view = inflater.inflate(R.layout.activity_escorts_informations, container, false );
         /*
         *Pegar Referência  do ListView e Button
         */
@@ -89,7 +89,7 @@ public class FragmentEscortsInformations extends Fragment {
             bundle.putSerializable("escorts", escorts);
             fragment.setArguments(bundle);
         }
-        tx.replace(R.id.fragment_companions_Informations, fragment);
+        tx.replace(R.id.fragment_escorts_informations, fragment);
         tx.addToBackStack(null);
         tx.commit();
     }
@@ -97,7 +97,7 @@ public class FragmentEscortsInformations extends Fragment {
     public void loadCompanions() {
 
         EscortsDAO dao = new EscortsDAO(getActivity());
-        companions = dao.getAllCompanions();
+        companions = dao.getAllEscort();
 
         List<String> companionsNames = new ArrayList<String>();
 

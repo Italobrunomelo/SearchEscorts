@@ -1,4 +1,4 @@
-package com.mobileprogramming.searchcompanions;
+package com.mobileprogramming.escortsearch;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

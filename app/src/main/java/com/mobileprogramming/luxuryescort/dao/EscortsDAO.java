@@ -1,11 +1,11 @@
-package com.mobileprogramming.escortsearch.dao;
+package com.mobileprogramming.luxuryescort.dao;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.mobileprogramming.escortsearch.model.Escorts;
+import com.mobileprogramming.luxuryescort.model.Escorts;
 
 import java.util.ArrayList;
 import java.util.List;

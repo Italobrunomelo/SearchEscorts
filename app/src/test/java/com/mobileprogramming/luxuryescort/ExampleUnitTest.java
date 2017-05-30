@@ -1,4 +1,4 @@
-package com.mobileprogramming.escortsearch;
+package com.mobileprogramming.luxuryescort;
 
 import org.junit.Test;
 

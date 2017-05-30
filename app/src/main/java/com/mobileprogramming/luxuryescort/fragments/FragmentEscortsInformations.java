@@ -1,4 +1,4 @@
-package com.mobileprogramming.escortsearch.fragments;
+package com.mobileprogramming.luxuryescort.fragments;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.mobileprogramming.escortsearch.model.Escorts;
-import com.mobileprogramming.escortsearch.R;
-import com.mobileprogramming.escortsearch.dao.EscortsDAO;
+import com.mobileprogramming.luxuryescort.model.Escorts;
+import com.mobileprogramming.luxuryescort.R;
+import com.mobileprogramming.luxuryescort.dao.EscortsDAO;
 
 import java.util.ArrayList;
 import java.util.List;

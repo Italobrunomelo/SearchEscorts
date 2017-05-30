@@ -1,4 +1,4 @@
-package com.mobileprogramming.escortsearch.fragments;
+package com.mobileprogramming.luxuryescort.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.mobileprogramming.escortsearch.ActivityEscortsList;
-import com.mobileprogramming.escortsearch.ActivityEscortsRegister;
-import com.mobileprogramming.escortsearch.ActivityUserRegister;
-import com.mobileprogramming.escortsearch.R;
+import com.mobileprogramming.luxuryescort.ActivityEscortsList;
+import com.mobileprogramming.luxuryescort.ActivityEscortsRegister;
+import com.mobileprogramming.luxuryescort.ActivityUserRegister;
+import com.mobileprogramming.luxuryescort.R;
 
 /**
  * Created by italo on 22/05/2017.
@@ -123,7 +123,7 @@ public class FragmentMain extends Fragment {
         private void loadCompanionsForm(Escorts escorts) {
             FragmentManager manager = getActivity().getSupportFragmentManager();
             FragmentTransaction tx = manager.beginTransaction();
-            Fragment fragment = new com.mobileprogramming.escortsearch.fragments.FragmentEscortsInformations();
+            Fragment fragment = new com.mobileprogramming.luxuryescort.fragments.FragmentEscortsInformations();
             if(escorts != null){
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("escorts", escorts);

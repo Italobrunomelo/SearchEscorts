@@ -1,4 +1,4 @@
-package com.mobileprogramming.escortsearch.model;
+package com.mobileprogramming.luxuryescort.model;
 
 import java.io.Serializable;
 

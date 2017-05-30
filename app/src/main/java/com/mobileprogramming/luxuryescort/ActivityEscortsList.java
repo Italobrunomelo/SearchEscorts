@@ -1,4 +1,4 @@
-package com.mobileprogramming.escortsearch;
+package com.mobileprogramming.luxuryescort;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

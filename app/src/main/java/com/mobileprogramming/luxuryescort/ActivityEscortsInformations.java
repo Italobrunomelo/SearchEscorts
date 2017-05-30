@@ -1,9 +1,9 @@
-package com.mobileprogramming.escortsearch;
+package com.mobileprogramming.luxuryescort;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.mobileprogramming.escortsearch.fragments.FragmentEscortsInformations;
+import com.mobileprogramming.luxuryescort.fragments.FragmentEscortsInformations;
 
 public class ActivityEscortsInformations extends AppCompatActivity {
 

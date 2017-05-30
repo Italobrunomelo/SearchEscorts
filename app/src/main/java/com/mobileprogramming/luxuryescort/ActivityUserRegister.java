@@ -1,9 +1,9 @@
-package com.mobileprogramming.escortsearch;
+package com.mobileprogramming.luxuryescort;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.mobileprogramming.escortsearch.fragments.FragmentUserRegister;
+import com.mobileprogramming.luxuryescort.fragments.FragmentUserRegister;
 
 /**
  * Created by italo on 27/05/2017.

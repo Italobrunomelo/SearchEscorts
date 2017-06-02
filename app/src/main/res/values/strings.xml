@@ -18,4 +18,5 @@
     <string name="textViewLoginFacebook">Use Facebook Login</string>
     <string name="buttonSaveUser">Register</string>
     <string name="editTextAge">Age</string>
+    <string name="SwitchStatusOff">Desabilitado</string>
 </resources>

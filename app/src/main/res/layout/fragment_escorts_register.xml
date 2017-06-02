@@ -35,45 +35,73 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:checked="true"
-            android:text="@string/SwitchStatus" />
+            android:text="@string/SwitchStatus"
+            android:textOn="@string/SwitchStatus"
+            android:textOff="@string/SwitchStatusOff"/>
 
-        <EditText
-            android:id="@+id/editTextName"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="@string/editTextNome" />
+            android:layout_marginTop="10dp">
 
-        <EditText
-            android:id="@+id/editTextInformation"
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/editTextNome" />
+        </android.support.design.widget.TextInputLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="@string/editTextInformation"
-            android:inputType="textMultiLine" />
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/editTextInformation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/editTextInformation"
+                    android:inputType="textMultiLine"
+                    android:maxLines="3" />
+            </android.support.design.widget.TextInputLayout>
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editTextPhone"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/editTextPhone"
-                android:inputType="phone"
-                android:layout_weight="1"/>
+                android:layout_weight="1">
 
-            <EditText
-                android:id="@+id/editTextAge"
+                <EditText
+                    android:id="@+id/editTextPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/editTextPhone"
+                    android:inputType="phone" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:hint="@string/editTextAge"
-                android:inputType="date"
-                android:layout_weight="2" />
+                android:layout_weight="2">
+
+                <EditText
+                    android:id="@+id/editTextAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:hint="@string/editTextAge"
+                    android:inputType="date" />
+            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -86,13 +114,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/editTextLocation"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="100dp"
-                    android:hint="@string/editTextLocation"
-                    android:inputType="textMultiLine" />
+                    android:layout_marginRight="100dp">
+
+                    <EditText
+                        android:id="@+id/editTextLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/editTextLocation"
+                        android:inputType="textMultiLine" />
+                </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:id="@+id/buttonLocationEscort"

@@ -20,6 +20,8 @@
         <activity android:name=".ActivityEscortsRegister"></activity>
         <activity android:name=".ActivityUserRegister"></activity>
         <activity android:name=".ActivityEscortsList"></activity>
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <utiliza-permissão android:name = "android.permission.READ_EXTERNAL_STORAGE" />
     </application>
 
 </manifest>

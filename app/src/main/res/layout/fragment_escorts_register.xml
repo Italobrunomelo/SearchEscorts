@@ -1,59 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
-
-    <ImageView
-        android:id="@+id/imageViewPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="3" />
-
-    <TextView
-        android:id="@+id/textViewUploadPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="onClick"
-        android:text="@string/textViewUploadPhoto">
-
-    </TextView>
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-        <Switch
-            android:id="@+id/switchStatus"
+
+        <ImageView
+            android:id="@+id/imageViewPhoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:checked="true"
-            android:text="@string/SwitchStatus"
-            android:textOn="@string/SwitchStatus"
-            android:textOff="@string/SwitchStatusOff"/>
+            android:layout_gravity="center"
+            android:src="@drawable/escorts"/>
 
-        <android.support.design.widget.TextInputLayout
+        <TextView
+            android:id="@+id/textViewUploadPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="onClick"
+            android:text="@string/textViewUploadPhoto">
+
+        </TextView>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editTextName"
-                android:layout_width="match_parent"
+            <Switch
+                android:id="@+id/switchStatus"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/editTextNome" />
-        </android.support.design.widget.TextInputLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                android:layout_gravity="end"
+                android:checked="true"
+                android:text="@string/SwitchStatus"
+                android:textOff="@string/SwitchStatusOff"
+                android:textOn="@string/SwitchStatus" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -61,94 +49,112 @@
                 android:layout_marginTop="10dp">
 
                 <EditText
-                    android:id="@+id/editTextInformation"
+                    android:id="@+id/editTextName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/editTextInformation"
-                    android:inputType="textMultiLine"
-                    android:maxLines="3" />
+                    android:hint="@string/editTextNome" />
             </android.support.design.widget.TextInputLayout>
-        </ScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <android.support.design.widget.TextInputLayout
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <EditText
+                        android:id="@+id/editTextInformation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/editTextInformation"
+                        android:inputType="textMultiLine"
+                        android:maxLines="3" />
+                </android.support.design.widget.TextInputLayout>
+            </ScrollView>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/editTextPhone"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/editTextPhone"
-                    android:inputType="phone" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_weight="1">
 
-            <android.support.design.widget.TextInputLayout
+                    <EditText
+                        android:id="@+id/editTextPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/editTextPhone"
+                        android:inputType="phone" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+
+                    <EditText
+                        android:id="@+id/editTextAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:hint="@string/editTextAge"
+                        android:inputType="numberDecimal" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/editTextAge"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:hint="@string/editTextAge"
-                    android:inputType="date" />
-            </android.support.design.widget.TextInputLayout>
-        </LinearLayout>
+                    android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="100dp">
+
+                        <EditText
+                            android:id="@+id/editTextLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/editTextLocation"
+                            android:inputType="textMultiLine" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/buttonLocationEscort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:text="@string/buttonLocationEscort" />
+                </FrameLayout>
+            </LinearLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="100dp">
-
-                    <EditText
-                        android:id="@+id/editTextLocation"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/editTextLocation"
-                        android:inputType="textMultiLine" />
-                </android.support.design.widget.TextInputLayout>
-
                 <Button
-                    android:id="@+id/buttonLocationEscort"
+                    android:id="@+id/buttonSaveEscort"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:text="@string/buttonLocationEscort" />
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/buttonSaveEscort" />
             </FrameLayout>
+
         </LinearLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/buttonSaveEscort"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_marginBottom="10dp"
-                android:text="@string/buttonSaveEscort" />
-        </FrameLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

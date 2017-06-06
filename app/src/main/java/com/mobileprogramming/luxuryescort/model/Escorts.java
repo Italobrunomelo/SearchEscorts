@@ -15,6 +15,10 @@ public class Escorts implements Serializable {
     private String mLocation;
     private String mStatus;
 
+    public Escorts() {
+
+    }
+
     public String getmName() {
         return mName;
     }

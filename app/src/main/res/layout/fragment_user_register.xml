@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,32 +17,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
+            android:layout_marginTop="30dp"
             android:clickable="true"
-            android:text="@string/textViewLoginGmail"
-            android:layout_marginTop="30dp"/>
+            android:text="@string/textViewLoginGmail" />
 
         <TextView
             android:id="@+id/textViewLoginFacebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:clickable="true"
-            android:text="@string/textViewLoginFacebook"
-            android:layout_marginTop="30dp"/>
-
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:hint="@string/editTextEmail" />
+            android:clickable="true"
+            android:text="@string/textViewLoginFacebook" />
 
-        <EditText
-            android:id="@+id/editTextCpf"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="@string/editTextCpf" />
+            android:layout_marginTop="30dp">
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/editTextEmail" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editTextCpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/editTextCpf" />
+        </android.support.design.widget.TextInputLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -52,8 +62,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
-                android:text="@string/buttonSaveUser"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:text="@string/buttonSaveUser" />
         </FrameLayout>
 
     </LinearLayout>

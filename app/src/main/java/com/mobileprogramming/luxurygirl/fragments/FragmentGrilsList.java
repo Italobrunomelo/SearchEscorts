@@ -1,4 +1,4 @@
-package com.mobileprogramming.luxuryescort.fragments;
+package com.mobileprogramming.luxurygirl.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,30 +6,28 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.mobileprogramming.luxuryescort.R;
-import com.mobileprogramming.luxuryescort.model.Escorts;
+import com.mobileprogramming.luxurygirl.R;
 
 /**
  * Created by italo on 24/05/2017.
  */
 
-public class FragmentEscortsList extends Fragment {
+public class FragmentGrilsList extends Fragment {
 
-    private ListView listEscort;
+    private ListView mListGirls;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_escorts_list, container, false);
-
+        View view = inflater.inflate(R.layout.fragment_girls_list, container, false);
 
 
         return view;
     }
+
 }
 
 /*
@@ -39,7 +37,7 @@ public class FragmentEscortsList extends Fragment {
         mImageButtonEnter.setOnClickListener(new View.OnClickListener() {
 @Override
 public void onClick(View v) {
-        Intent it = new Intent(getActivity(), ActivityEscortsList.class);
+        Intent it = new Intent(getActivity(), ActivityGirlsList.class);
         startActivity(it);
         }
         });
@@ -61,7 +59,7 @@ public void onClick(View v) {
         mImageButtonEscortNew.setOnClickListener(new View.OnClickListener() {
 @Override
 public void onClick(View v) {
-        Intent it = new Intent(getActivity(), ActivityEscortsRegister.class);
+        Intent it = new Intent(getActivity(), ActivityGirlsRegister.class);
         startActivity(it);
         }
         });

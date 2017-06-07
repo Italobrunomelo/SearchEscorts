@@ -1,11 +1,11 @@
-package com.mobileprogramming.luxuryescort.dao;
+package com.mobileprogramming.luxurygirl.dao;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.mobileprogramming.luxuryescort.model.User;
+import com.mobileprogramming.luxurygirl.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 public class UserDAO extends SQLiteOpenHelper {
 
     public UserDAO(Context context) {
-        super(context, "Search Escorts", null, 2);
+        super(context, "Search Girls", null, 2);
     }
 
     @Override

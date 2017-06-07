@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Garotas de Luxo</string>
+    <string name="editTextNome">Nome</string>
+    <string name="editTextInformation">Informações</string>
+    <string name="editTextPhone">Contato</string>
+    <string name="buttonLocationEscort">Enviar Localização</string>
+    <string name="editTextLocation">Localização</string>
+    <string name="buttonSaveEscort">Registrar</string>
+    <string name="SwitchStatus">Disponível</string>
+    <string name="textViewUploadPhoto">Enviar Foto</string>
+    <string name="textViewLoginEscort">Entrar como garota</string>
+    <string name="textViewInformationActivityMain">Garota de luxo com um clique!</string>
+    <string name="textViewCompanionsNew">Seja uma Garota</string>
+    <string name="textViewUserNew">Registrar Novo Usuário</string>
+    <string name="editTextEmail">Email</string>
+    <string name="editTextPassword">Senha</string>
+    <string name="textViewLoginGmail">Usar login Gmail</string>
+    <string name="textViewLoginFacebook">Usar login Facebook</string>
+    <string name="buttonSaveUser">Registrar</string>
+    <string name="editTextAge">Idade</string>
+</resources>

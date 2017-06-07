@@ -1,22 +1,21 @@
 <resources>
-    <string name="app_name">Luxury Escorts</string>
+    <string name="app_name">Girls of Luxury</string>
     <string name="editTextNome">Name</string>
     <string name="editTextInformation">Information</string>
     <string name="editTextPhone">Contact</string>
-    <string name="buttonLocationEscort">Locantion</string>
-    <string name="editTextLocation">Report Location</string>
+    <string name="buttonLocationEscort">Send Locantion</string>
+    <string name="editTextLocation">Location</string>
     <string name="buttonSaveEscort">Register</string>
     <string name="SwitchStatus">Available</string>
     <string name="textViewUploadPhoto">Upload Photo</string>
-    <string name="textViewLoginEscort">Login Escort</string>
-    <string name="textViewInformationActivityMain">Escorts in a click!</string>
-    <string name="textViewCompanionsNew">Be a escorts</string>
+    <string name="textViewLoginEscort">Login Girl</string>
+    <string name="textViewInformationActivityMain">Luxury girl with a click!</string>
+    <string name="textViewCompanionsNew">Be a Girls</string>
     <string name="textViewUserNew">Register New User</string>
     <string name="editTextEmail">Email</string>
-    <string name="editTextCpf">CPF</string>
+    <string name="editTextPassword">Password</string>
     <string name="textViewLoginGmail">Use Gmail Login</string>
     <string name="textViewLoginFacebook">Use Facebook Login</string>
     <string name="buttonSaveUser">Register</string>
     <string name="editTextAge">Age</string>
-    <string name="SwitchStatusOff">Desabilitado</string>
 </resources>

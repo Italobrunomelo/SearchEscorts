@@ -1,4 +1,4 @@
-package com.mobileprogramming.luxuryescort.model;
+package com.mobileprogramming.luxurygirl.model;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by italo on 17/05/2017.
  */
 
-public class Escorts implements Serializable {
+public class Girls implements Serializable {
 
     private String mName;
     private String mAge;
@@ -15,7 +15,7 @@ public class Escorts implements Serializable {
     private String mLocation;
     private String mStatus;
 
-    public Escorts() {
+    public Girls() {
 
     }
 

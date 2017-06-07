@@ -1,4 +1,4 @@
-package com.mobileprogramming.luxuryescort.fragments;
+package com.mobileprogramming.luxurygirl.fragments;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -20,20 +20,19 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mobileprogramming.luxuryescort.R;
-import com.mobileprogramming.luxuryescort.dao.EscortsDAO;
-import com.mobileprogramming.luxuryescort.model.Escorts;
+import com.mobileprogramming.luxurygirl.R;
+import com.mobileprogramming.luxurygirl.dao.GirlsDAO;
+import com.mobileprogramming.luxurygirl.model.Girls;
 
-import static android.R.attr.data;
 import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by italo on 17/05/2017.
  */
 
-public class FragmentEscortsRegister extends Fragment {
-    EscortsDAO mEscortDAO = new EscortsDAO(getActivity());
-    Escorts mEscort = new Escorts();
+public class FragmentGirlsRegister extends Fragment {
+    GirlsDAO mEscortDAO = new GirlsDAO(getActivity());
+    Girls mEscort = new Girls();
 
     private static final int SELECT_PICTURE = 1;
     private String mSelectedImagePath;
@@ -41,7 +40,7 @@ public class FragmentEscortsRegister extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_escorts_register, container, false);
+        View view = inflater.inflate(R.layout.fragment_girls_register, container, false);
 
         final EditText mEditTextName = (EditText) view.findViewById(R.id.editTextName);
         final EditText mEditTextInformation = (EditText) view.findViewById(R.id.editTextInformation);
@@ -58,7 +57,7 @@ public class FragmentEscortsRegister extends Fragment {
 
         Bundle bundle = getArguments();
         if (bundle != null) {
-            Escorts escort = (Escorts) bundle.getSerializable("escort");
+            Girls escort = (Girls) bundle.getSerializable("escort");
             mEditTextName.setText(escort.getmName());
             mEditTextInformation.setText(escort.getmInformation());
             mEditTextPhone.setText(escort.getmContact());
@@ -79,6 +78,7 @@ public class FragmentEscortsRegister extends Fragment {
                 mIntentGaleria.setType("image/*");
                 mIntentGaleria.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(mIntentGaleria, "Select Picture"), SELECT_PICTURE);
+
 
             }
         });

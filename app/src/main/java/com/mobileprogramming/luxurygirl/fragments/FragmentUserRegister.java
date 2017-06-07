@@ -1,4 +1,4 @@
-package com.mobileprogramming.luxuryescort.fragments;
+package com.mobileprogramming.luxurygirl.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mobileprogramming.luxuryescort.R;
+import com.mobileprogramming.luxurygirl.R;
 
 /**
  * Created by italo on 27/05/2017.

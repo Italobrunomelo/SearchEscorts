@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/escorts"/>
+            android:src="@drawable/girls"/>
 
         <TextView
             android:id="@+id/textViewUploadPhoto"
@@ -39,9 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:checked="true"
-                android:text="@string/SwitchStatus"
-                android:textOff="@string/SwitchStatusOff"
-                android:textOn="@string/SwitchStatus" />
+                android:text="@string/SwitchStatus" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"

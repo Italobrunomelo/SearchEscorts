@@ -1,4 +1,4 @@
-package com.mobileprogramming.luxuryescort.fragments;
+package com.mobileprogramming.luxurygirl.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.mobileprogramming.luxuryescort.ActivityEscortsList;
-import com.mobileprogramming.luxuryescort.ActivityEscortsRegister;
-import com.mobileprogramming.luxuryescort.ActivityUserRegister;
-import com.mobileprogramming.luxuryescort.R;
+import com.mobileprogramming.luxurygirl.ActivityGirlsInformations;
+import com.mobileprogramming.luxurygirl.ActivityGirlsList;
+import com.mobileprogramming.luxurygirl.ActivityGirlsRegister;
+import com.mobileprogramming.luxurygirl.ActivityUserRegister;
+import com.mobileprogramming.luxurygirl.R;
 
 /**
  * Created by italo on 22/05/2017.
@@ -32,7 +33,7 @@ public class FragmentMain extends Fragment {
         mImageButtonEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getActivity(), ActivityEscortsList.class);
+                Intent it = new Intent(getActivity(), ActivityGirlsList.class);
                 startActivity(it);
             }
         });
@@ -54,7 +55,7 @@ public class FragmentMain extends Fragment {
         mImageButtonEscortNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getActivity(), ActivityEscortsRegister.class);
+                Intent it = new Intent(getActivity(), ActivityGirlsRegister.class);
                 startActivity(it);
             }
         });
@@ -65,7 +66,7 @@ public class FragmentMain extends Fragment {
         mtextViewLoginEscort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getActivity(), ActivityEscortsRegister.class);
+                Intent it = new Intent(getActivity(), ActivityGirlsRegister.class);
                 startActivity(it);
             }
         });
@@ -81,13 +82,13 @@ public class FragmentMain extends Fragment {
 
             Button buttonAdd = (Button) view.findViewById(R.id.buttonAdd);
 
-            loadCompanions();
+            loadGirls();
 
         /*
         //ListView X PageView-> lvCompanions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                loadCompanionsForm(escorts.get(position));
+                loadCompanionsForm(girls.get(position));
             }
         });
         */
@@ -102,7 +103,7 @@ public class FragmentMain extends Fragment {
                         if(isLandScape()){
                             loadCompanionsForm(null);
                         }else{
-                            Intent it = new Intent(getActivity(), ActivityEscortsRegister.class);
+                            Intent it = new Intent(getActivity(), ActivityGirlsRegister.class);
                             startActivity(it);
                         }
                     }
@@ -120,29 +121,29 @@ public class FragmentMain extends Fragment {
             return false;
         }
 
-        private void loadCompanionsForm(Escorts escorts) {
+        private void loadCompanionsForm(Girls girls) {
             FragmentManager manager = getActivity().getSupportFragmentManager();
             FragmentTransaction tx = manager.beginTransaction();
-            Fragment fragment = new com.mobileprogramming.luxuryescort.fragments.FragmentEscortsInformations();
-            if(escorts != null){
+            Fragment fragment = new com.mobileprogramming.luxurygirl.fragments.FragmentGirlsInformations();
+            if(girls != null){
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("escorts", escorts);
+                bundle.putSerializable("girls", girls);
                 fragment.setArguments(bundle);
             }
-            tx.replace(R.id.fragment_escorts_informations, fragment);
+            tx.replace(R.id.fragment_girls_informations, fragment);
             tx.addToBackStack(null);
             tx.commit();
         }
 
-        public void loadCompanions() {
+        public void loadGirls() {
 
-            EscortsDAO dao = new EscortsDAO(getActivity());
-            escorts = dao.getAllCompanions();
+            GirlsDAO dao = new GirlsDAO(getActivity());
+            girls = dao.getAllCompanions();
 
             List<String> companionsNames = new ArrayList<String>();
 
-            for (Escorts escorts : this.escorts) {
-                companionsNames.add(escorts.getmName());
+            for (Girls girls : this.girls) {
+                companionsNames.add(girls.getmName());
             }
 
             adapter = new ArrayAdapter<String>(getActivity(),
@@ -154,7 +155,7 @@ public class FragmentMain extends Fragment {
         @Override
         public void onStart() {
             super.onStart();
-            loadCompanions();
+            loadGirls();
         }
     }
 

@@ -1,9 +1,9 @@
-package com.mobileprogramming.luxuryescort;
+package com.mobileprogramming.luxurygirl;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.mobileprogramming.luxuryescort.fragments.FragmentMain;
+import com.mobileprogramming.luxurygirl.fragments.FragmentMain;
 
 /**
  * Created by italo on 23/05/2017.

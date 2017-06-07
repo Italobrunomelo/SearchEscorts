@@ -1,4 +1,4 @@
-package com.mobileprogramming.luxuryescort.model;
+package com.mobileprogramming.luxurygirl.model;
 
 /**
  * Created by italo on 27/05/2017.

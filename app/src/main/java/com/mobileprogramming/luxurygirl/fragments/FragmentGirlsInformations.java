@@ -1,4 +1,4 @@
-package com.mobileprogramming.luxuryescort.fragments;
+package com.mobileprogramming.luxurygirl.fragments;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.mobileprogramming.luxuryescort.model.Escorts;
-import com.mobileprogramming.luxuryescort.R;
-import com.mobileprogramming.luxuryescort.dao.EscortsDAO;
+import com.mobileprogramming.luxurygirl.dao.GirlsDAO;
+import com.mobileprogramming.luxurygirl.model.Girls;
+import com.mobileprogramming.luxurygirl.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +23,16 @@ import java.util.List;
  * Created by italo on 17/05/2017.
  */
 
-public class FragmentEscortsInformations extends Fragment {
-
-    List<Escorts> companions = new ArrayList<Escorts>();
-    private ArrayAdapter<String> adapter;
+public class FragmentGirlsInformations extends Fragment {
+/*
+    List<Girls> mListGirl = new ArrayList<Girls>();
+    private ArrayAdapter<String> mAdapter;
     private ListView lvCompanions;
-
+*/
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_escorts_informations, container, false );
+        View view = inflater.inflate(R.layout.activity_girls_informations, container, false );
         /*
         *Pegar Referência  do ListView e Button
         */
@@ -41,13 +41,13 @@ public class FragmentEscortsInformations extends Fragment {
 
         //Button buttonAdd = (Button) view.findViewById(R.id.buttonAdd);
 
-        loadCompanions();
+        //loadGirls();
 
         /*
         //ListView X PageView-> lvCompanions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                loadCompanionsForm(escorts.get(position));
+                loadGirlsForm(girls.get(position));
             }
         });
         */
@@ -60,9 +60,9 @@ public class FragmentEscortsInformations extends Fragment {
             public void onClick(View v) {
 
                 if(isLandScape()){
-                    loadCompanionsForm(null);
+                    loadGirlsForm(null);
                 }else{
-                    Intent it = new Intent(getActivity(), ActivityEscortsRegister.class);
+                    Intent it = new Intent(getActivity(), ActivityGirlsRegister.class);
                     startActivity(it);
                 }
             }
@@ -71,8 +71,7 @@ public class FragmentEscortsInformations extends Fragment {
     }
 
     /*
-    *CONFIGURAÇÃO SE LANDSCAPE
-    */
+    //CONFIGURAÇÃO SE LANDSCAPE
     public boolean isLandScape(){
         Configuration configuration = getResources().getConfiguration();
         if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
@@ -80,40 +79,40 @@ public class FragmentEscortsInformations extends Fragment {
         return false;
     }
 
-    private void loadCompanionsForm(Escorts escorts) {
+    private void loadGirlsForm(Girls girls) {
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction tx = manager.beginTransaction();
-        Fragment fragment = new FragmentEscortsInformations();
-        if(escorts != null){
+        Fragment fragment = new FragmentGirlsInformations();
+        if(girls != null){
             Bundle bundle = new Bundle();
-            bundle.putSerializable("escorts", escorts);
+            bundle.putSerializable("girls", girls);
             fragment.setArguments(bundle);
         }
-        tx.replace(R.id.fragment_escorts_informations, fragment);
+        tx.replace(R.id.fragment_girls_informations, fragment);
         tx.addToBackStack(null);
         tx.commit();
     }
 
-    public void loadCompanions() {
+    public void loadGirls() {
 
-        EscortsDAO dao = new EscortsDAO(getActivity());
-        companions = dao.getAllEscort();
+        GirlsDAO dao = new GirlsDAO(getActivity());
+        mListGirl = dao.getAllGirls();
 
-        List<String> companionsNames = new ArrayList<String>();
+        List<String> mGirlsNames = new ArrayList<String>();
 
-        for (Escorts escorts : this.companions) {
-            companionsNames.add(escorts.getmName());
+        for (Girls girls : this.mListGirl) {
+            mGirlsNames.add(girls.getmName());
         }
 
-        adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1,companionsNames);
-        lvCompanions.setAdapter(adapter);
+        mAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1,mGirlsNames);
+        lvCompanions.setAdapter(mAdapter);
     }
 
 
     @Override
     public void onStart() {
         super.onStart();
-        loadCompanions();
-    }
+        loadGirls();
+    }*/
 }

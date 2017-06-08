@@ -6,6 +6,11 @@ package com.mobileprogramming.luxurygirl.model;
 
 public class User {
     private String mEmail;
+    private String mPassword;
+
+    public User() {
+
+    }
 
     public String getmEmail() {
         return mEmail;
@@ -13,6 +18,14 @@ public class User {
 
     public void setmEmail(String mEmail) {
         this.mEmail = mEmail;
+    }
+
+    public String getmPassword() {
+        return mPassword;
+    }
+
+    public void setmPassword(String mPassword) {
+        this.mPassword = mPassword;
     }
 
     @Override

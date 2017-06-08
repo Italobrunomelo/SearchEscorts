@@ -17,12 +17,12 @@ import java.util.List;
 public class UserDAO extends SQLiteOpenHelper {
 
     public UserDAO(Context context) {
-        super(context, "Search Girls", null, 2);
+        super(context, "dbUsers", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE User (email TEXT NOT NULL);";
+        String sql = "CREATE TABLE User (email TEXT NOT NULL,password TEXT NOT NULL);";
         db.execSQL(sql);
     }
 
@@ -34,28 +34,31 @@ public class UserDAO extends SQLiteOpenHelper {
     }
 
     //INSERT
-    public void insert(User user){
-        String sql = "INSERT INTO User (email) VALUES ('" + user.getmEmail()+"');";
+    public void insert(User user) {
+        String sql = "INSERT INTO User (email,password) VALUES ('" + user.getmEmail() + "','"+ user.getmPassword()+"');";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(sql);
         db.close();
     }
 
-    //GetAllUser
-    public List<User> getAllUser(){
-        String sql = "SELECT * FROM User;";
+    //DELETE
+    public void delete(User user) {
+        String sql = "DELETE FROM User WHERE email = '" + user.getmEmail() + "';";
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(sql);
+        db.close();
+    }
+
+    //GetUser
+    public User getUser(String nEmail) {
+        String sql = "SELECT * FROM User WHERE email = '" + nEmail + "';";
         SQLiteDatabase sqLiteDb = getReadableDatabase();
         Cursor cursor = sqLiteDb.rawQuery(sql, null);
-        List<User> users = new ArrayList<User>();
-
-        while(cursor.moveToNext()){
-            User user = new User();
-            user.setmEmail(cursor.getString(cursor.getColumnIndex("email")));
-            users.add(user);
-        }
+        User user = new User();
+        user.setmEmail(cursor.getString(cursor.getColumnIndex("email")));
 
         sqLiteDb.close();
 
-        return users;
+        return user;
     }
 }

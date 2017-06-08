@@ -18,4 +18,8 @@
     <string name="textViewLoginFacebook">Use Facebook Login</string>
     <string name="buttonSaveUser">Register</string>
     <string name="editTextAge">Age</string>
+    <string name="ButtonAlertPhoto">Camera</string>
+    <string name="ButtonAlertImage">Gallery</string>
+    <string name="loading_image">Loading image from?</string>
+    <string name="mensage_added_girl">Girl Added successfully!</string>
 </resources>

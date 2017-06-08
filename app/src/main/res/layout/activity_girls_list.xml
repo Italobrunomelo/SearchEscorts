@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/fragment_escorts_list"
+        android:id="@+id/fragment_girls_list"
         android:name="com.mobileprogramming.luxurygirl.fragments.FragmentGrilsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

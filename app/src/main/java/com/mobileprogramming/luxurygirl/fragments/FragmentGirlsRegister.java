@@ -1,12 +1,9 @@
 package com.mobileprogramming.luxurygirl.fragments;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -24,22 +21,20 @@ import com.mobileprogramming.luxurygirl.R;
 import com.mobileprogramming.luxurygirl.dao.GirlsDAO;
 import com.mobileprogramming.luxurygirl.model.Girls;
 
-import static android.app.Activity.RESULT_OK;
-
 /**
  * Created by italo on 17/05/2017.
  */
 
 public class FragmentGirlsRegister extends Fragment {
-    GirlsDAO mEscortDAO = new GirlsDAO(getActivity());
-    Girls mEscort = new Girls();
-
     private static final int SELECT_PICTURE = 1;
     private String mSelectedImagePath;
+
+    private AlertDialog mAlertDialogImage;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_girls_register, container, false);
 
         final EditText mEditTextName = (EditText) view.findViewById(R.id.editTextName);
@@ -50,61 +45,70 @@ public class FragmentGirlsRegister extends Fragment {
         final Switch mSwitchStatus = (Switch) view.findViewById(R.id.switchStatus);
 
         TextView mTextViewUploadPhoto = (TextView) view.findViewById(R.id.textViewUploadPhoto);
-        Button mButtonLocationEscort = (Button) view.findViewById(R.id.buttonLocationEscort);
-        Button mButtonSaveEscort = (Button) view.findViewById(R.id.buttonSaveEscort);
+        Button mButtonLocationGirl = (Button) view.findViewById(R.id.buttonLocationEscort);
+        Button mButtonSaveGirl = (Button) view.findViewById(R.id.buttonSaveEscort);
 
         ImageView mImageViewPhoto = (ImageView) view.findViewById(R.id.imageViewPhoto);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
-            Girls escort = (Girls) bundle.getSerializable("escort");
-            mEditTextName.setText(escort.getmName());
-            mEditTextInformation.setText(escort.getmInformation());
-            mEditTextPhone.setText(escort.getmContact());
-            mEditTextAge.setText(escort.getmAge());
-            mEditTextLocation.setText(escort.getmLocation());
+            Girls mGirl = (Girls) bundle.getSerializable("dbLuxuryGirls");
+            mEditTextName.setText(mGirl.getmName());
+            mEditTextInformation.setText(mGirl.getmInformation());
+            mEditTextPhone.setText(mGirl.getmContact());
+            mEditTextAge.setText(mGirl.getmAge());
+            mEditTextLocation.setText(mGirl.getmLocation());
             mSwitchStatus.setChecked(true);
         }
 
         mTextViewUploadPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //CHAMADA DA CAMERA
-                Intent mTakePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(mTakePictureIntent, 5678);
+                //Intent mTakePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                //startActivityForResult(mTakePictureIntent, 5678);
+                Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(takePicture, 0);//zero can be replaced with any action code
 
                 //SELECIONAR IMAGEM DA GALERIA
-                Intent mIntentGaleria = new Intent();
-                mIntentGaleria.setType("image/*");
-                mIntentGaleria.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(mIntentGaleria, "Select Picture"), SELECT_PICTURE);
+                //Intent mIntentGaleria = new Intent();
+                //mIntentGaleria.setType("image/*");
+                //mIntentGaleria.setAction(Intent.ACTION_GET_CONTENT);
+                //startActivityForResult(Intent.createChooser(mIntentGaleria, "Select Picture"), SELECT_PICTURE);
+                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickPhoto, 1);//one can be replaced with any action code
 
 
             }
         });
 
-        mButtonLocationEscort.setOnClickListener(new View.OnClickListener() {
+        mButtonLocationGirl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
 
-        mButtonSaveEscort.setOnClickListener(new View.OnClickListener() {
+        mButtonSaveGirl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mEscort.setmName(mEditTextName.getText().toString());
-                mEscort.setmInformation(mEditTextInformation.getText().toString());
-                mEscort.setmContact(mEditTextPhone.getText().toString());
-                mEscort.setmAge(mEditTextAge.getText().toString());
-                mEscort.setmLocation(mEditTextLocation.getText().toString());
+                GirlsDAO mGirlDAO = new GirlsDAO(getActivity());
+                Girls mGirls = new Girls();
+
+                mGirls.setmName(mEditTextName.getText().toString());
+                mGirls.setmInformation(mEditTextInformation.getText().toString());
+                mGirls.setmContact(mEditTextPhone.getText().toString());
+                mGirls.setmAge(mEditTextAge.getText().toString());
+                mGirls.setmLocation(mEditTextLocation.getText().toString());
                 if (mSwitchStatus.isChecked()) {
-                    mEscort.setmStatus("true");
+                    mGirls.setmStatus("true");
                 } else {
-                    mEscort.setmStatus("false");
+                    mGirls.setmStatus("false");
                 }
 
-                mEscortDAO.insert(mEscort);
+                mGirlDAO.insert(mGirls);
 
                 /*
                 OnRefreshFormOK activity = (OnRefreshFormOK) getActivity();
@@ -113,10 +117,11 @@ public class FragmentGirlsRegister extends Fragment {
                 if (!isLandScape())
                     getActivity().finish();
 
-                Toast.makeText(getActivity(), "Escort Added successfully!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), R.string.mensage_added_girl, Toast.LENGTH_LONG).show();
 
             }
         });
+
 
         return view;
     }

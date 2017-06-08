@@ -47,7 +47,7 @@ public class FragmentGirlsInformations extends Fragment {
         //ListView X PageView-> lvCompanions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                loadGirlsForm(girls.get(position));
+                loadGirlsForm(mGirls.get(position));
             }
         });
         */
@@ -79,13 +79,13 @@ public class FragmentGirlsInformations extends Fragment {
         return false;
     }
 
-    private void loadGirlsForm(Girls girls) {
+    private void loadGirlsForm(Girls mGirls) {
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction tx = manager.beginTransaction();
         Fragment fragment = new FragmentGirlsInformations();
-        if(girls != null){
+        if(mGirls != null){
             Bundle bundle = new Bundle();
-            bundle.putSerializable("girls", girls);
+            bundle.putSerializable("mGirls", mGirls);
             fragment.setArguments(bundle);
         }
         tx.replace(R.id.fragment_girls_informations, fragment);
@@ -100,8 +100,8 @@ public class FragmentGirlsInformations extends Fragment {
 
         List<String> mGirlsNames = new ArrayList<String>();
 
-        for (Girls girls : this.mListGirl) {
-            mGirlsNames.add(girls.getmName());
+        for (Girls mGirls : this.mListGirl) {
+            mGirlsNames.add(mGirls.getmName());
         }
 
         mAdapter = new ArrayAdapter<String>(getActivity(),

@@ -17,7 +17,7 @@ import java.util.List;
 public class GirlsDAO extends SQLiteOpenHelper {
 
     public GirlsDAO(Context context) {
-        super(context, "Search Girls", null, 2);
+        super(context, "dbLuxuryGirls", null, 1);
     }
 
     @Override
@@ -45,23 +45,24 @@ public class GirlsDAO extends SQLiteOpenHelper {
 
     //GetAllEscort
     public List<Girls> getAllGirls(){
-        String sql = "SELECT * FROM Girls WHERE status = 'true';";
+        String sql = "SELECT * FROM Girls;";
         SQLiteDatabase sqLiteDb = getReadableDatabase();
         Cursor cursor = sqLiteDb.rawQuery(sql, null);
-        List<Girls> girls = new ArrayList<Girls>();
+        List<Girls> girl = new ArrayList<Girls>();
 
         while(cursor.moveToNext()){
-            Girls girl = new Girls();
-            girl.setmName(cursor.getString(cursor.getColumnIndex("name")));
-            girl.setmAge(cursor.getString(cursor.getColumnIndex("age")));
-            girl.setmInformation(cursor.getString(cursor.getColumnIndex("information")));
-            girl.setmContact(cursor.getString(cursor.getColumnIndex("contact")));
-            girl.setmLocation(cursor.getString(cursor.getColumnIndex("location")));
-            girls.add(girl);
+            Girls girls = new Girls();
+            girls.setmName(cursor.getString(cursor.getColumnIndex("name")));
+            girls.setmAge(cursor.getString(cursor.getColumnIndex("age")));
+            girls.setmInformation(cursor.getString(cursor.getColumnIndex("information")));
+            girls.setmContact(cursor.getString(cursor.getColumnIndex("contact")));
+            girls.setmLocation(cursor.getString(cursor.getColumnIndex("location")));
+            girls.setmStatus(cursor.getString(cursor.getColumnIndex("status")));
+            girl.add(girls);
         }
 
         sqLiteDb.close();
 
-        return girls;
+        return girl;
     }
 }

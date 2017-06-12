@@ -1,4 +1,4 @@
-package com.mobileprogramming.luxurygirl;
+package com.mobileprogramming.luxurygirl.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

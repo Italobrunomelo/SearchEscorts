@@ -22,4 +22,5 @@
     <string name="ButtonAlertImage">Galeria</string>
     <string name="loading_image">Carregando imagem de?</string>
     <string name="mesage_added_girl">Acompanhante adicionada com sucesso!</string>
+    <string name="select_picture_title">Select the picture</string>
 </resources>

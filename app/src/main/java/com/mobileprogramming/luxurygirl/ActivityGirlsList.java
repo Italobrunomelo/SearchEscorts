@@ -3,9 +3,8 @@ package com.mobileprogramming.luxurygirl;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
-import com.mobileprogramming.luxurygirl.fragments.FragmentGrilsList;
+import com.mobileprogramming.luxurygirl.adapter.PageFragmentAdaper;
 
 /**
  * Created by italo on 24/05/2017.
@@ -27,7 +26,7 @@ public class ActivityGirlsList extends AppCompatActivity {
         mPageFragmentAdaper = new PageFragmentAdaper(getSupportFragmentManager(), titles);
         mViewPager.setAdapter(mPageFragmentAdaper);
 
-        /*new AsyncTask<Void, Void, List<Pokemon>>() {
+        /*new AsyncTask<Void, Void, List<Motel>>() {
 
             public ProgressDialog dialog;
 
@@ -37,9 +36,9 @@ public class ActivityGirlsList extends AppCompatActivity {
             }
 
             @Override
-            protected List<Pokemon> doInBackground(Void... params) {
+            protected List<Motel> doInBackground(Void... params) {
                 //Uma requisição a API Pokemon
-                List<Pokemon> pokemons = null;
+                List<Motel> mMotel = null;
 
                 try {
                     URL url = new URL("http://pokeapi.co/api/v2/pokemon");
@@ -54,9 +53,9 @@ public class ActivityGirlsList extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(json);
                     JSONArray jsonArray = jsonObject.getJSONArray("results");
 
-                    Type type = new TypeToken<List<Pokemon>>() {
+                    Type type = new TypeToken<List<Motel>>() {
                     }.getType();
-                    pokemons = gson.fromJson(jsonArray.toString(), type);
+                    mMotel = gson.fromJson(jsonArray.toString(), type);
 
 
                 } catch (MalformedURLException e) {
@@ -67,19 +66,19 @@ public class ActivityGirlsList extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                return pokemons;
+                return mMotel;
             }
 
             @Override
-            protected void onPostExecute(List<Pokemon> pokemons) {
+            protected void onPostExecute(List<Motel> mMoteis) {
                 dialog.dismiss();
 
-                PageFragment fragment1 = (PageFragment) mAdaper.getItem(0);
-                PageFragment fragment2 = (PageFragment) mAdaper.getItem(1);
-                fragment1.pokemons = pokemons.subList(0, 10);
-                fragment2.pokemons = pokemons.subList(11, 20);
+                PageFragment fragment1 = (PageFragment) mPageFragmentAdaper.getItem(0);
+                PageFragment fragment2 = (PageFragment) mPageFragmentAdaper.getItem(1);
+                fragment1.pokemons = mMoteis.subList(0, 10);
+                fragment2.pokemons = mMoteis.subList(11, 20);
 
-                mAdaper.notifyDataSetChanged();
+                mPageFragmentAdaper.notifyDataSetChanged();
 
                 fragment1.arrayAdapter.notifyDataSetChanged();
                 fragment2.arrayAdapter.notifyDataSetChanged();

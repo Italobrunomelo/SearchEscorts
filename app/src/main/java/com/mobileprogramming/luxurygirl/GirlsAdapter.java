@@ -1,4 +1,4 @@
-package com.mobileprogramming.luxurygirl.adapter;
+package com.mobileprogramming.luxurygirl;
 
 import android.content.Context;
 import android.view.LayoutInflater;

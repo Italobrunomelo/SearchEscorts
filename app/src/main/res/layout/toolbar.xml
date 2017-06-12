@@ -9,4 +9,4 @@
     android:background="?attr/colorPrimary"
     android:minHeight="?attr/actionBarSize"
     android:elevation="4dp"
-    android:title=""/>
+    android:title="@string/app_name"/>

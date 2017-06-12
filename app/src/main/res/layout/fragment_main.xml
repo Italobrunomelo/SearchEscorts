@@ -2,83 +2,91 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textViewInformationActivityMain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="@string/textViewInformationActivityMain" />
-
-        <ImageButton
-            android:id="@+id/imageButtonEnter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/girls" />
-
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewUserNew"
+                android:id="@+id/textViewInformationActivityMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
-                android:layout_marginBottom="20dp"
-                android:onClick="onClick"
-                android:text="@string/textViewUserNew" />
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/textViewInformationActivityMain" />
 
-        </FrameLayout>
+            <ImageButton
+                android:id="@+id/imageButtonEnter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/girls" />
 
-    </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textViewUserNew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginBottom="20dp"
+                    android:onClick="onClick"
+                    android:text="@string/textViewUserNew" />
 
-        <TextView
-            android:id="@+id/textViewCompanionsNew"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="@string/textViewCompanionsNew" />
+            </FrameLayout>
 
-        <ImageButton
-            android:id="@+id/imageButtonEscortNew"
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/girls" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewLoginEscort"
+                android:id="@+id/textViewCompanionsNew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|bottom"
-                android:layout_marginBottom="20dp"
-                android:onClick="onClick"
-                android:text="@string/textViewLoginEscort" />
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/textViewCompanionsNew" />
 
-        </FrameLayout>
+            <ImageButton
+                android:id="@+id/imageButtonEscortNew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/girls" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textViewLoginEscort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginBottom="20dp"
+                    android:onClick="onClick"
+                    android:text="@string/textViewLoginEscort" />
+
+            </FrameLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
-
 </LinearLayout>

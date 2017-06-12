@@ -2,9 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mobileprogramming.luxurygirl">
 
-    <utiliza-permissão android:name = "android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <utiliza-permissão android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -20,10 +21,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ActitvityPageViewMotel"
+            android:parentActivityName=".ActivityGirlsList">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".ActivityGirlsList"
+            android:launchMode="singleTop" />
         <activity android:name="com.mobileprogramming.luxurygirl.ActivityGirlsInformations"></activity>
         <activity android:name="com.mobileprogramming.luxurygirl.ActivityGirlsRegister"></activity>
         <activity android:name="com.mobileprogramming.luxurygirl.ActivityUserRegister"></activity>
-        <activity android:name="com.mobileprogramming.luxurygirl.ActivityGirlsList"></activity>
     </application>
 
 </manifest>

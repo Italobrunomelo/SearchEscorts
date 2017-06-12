@@ -23,4 +23,7 @@
     <string name="loading_image">Carregando imagem de?</string>
     <string name="mesage_added_girl">Acompanhante adicionada com sucesso!</string>
     <string name="select_picture_title">Select the picture</string>
+    <string name="no_connection">No connection</string>
+    <string name="downloading_motel_information">Downloading motels information...</string>
+    <string name="failed_to_get_motels">Failed to get motels</string>
 </resources>

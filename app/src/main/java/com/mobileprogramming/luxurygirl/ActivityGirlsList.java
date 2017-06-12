@@ -3,24 +3,14 @@ package com.mobileprogramming.luxurygirl;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.renderscript.Type;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
-import com.mobileprogramming.luxurygirl.adapter.PageFragmentAdaper;
-import com.mobileprogramming.luxurygirl.fragments.PageFragment;
+import com.mobileprogramming.luxurygirl.fragments.FragmentPageView;
 import com.mobileprogramming.luxurygirl.model.Motel;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by italo on 24/05/2017.
@@ -28,19 +18,20 @@ import java.util.Scanner;
 
 public class ActivityGirlsList extends AppCompatActivity {
 
-    private PageFragmentAdaper mPageFragmentAdaper;
+    private PageAdaper mPageAdaper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_girls_list);
 
-        //setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         ViewPager mViewPager = (ViewPager) findViewById(R.id.pager);
         String[] titles = {"Girls", "Motels"};
-        mPageFragmentAdaper = new PageFragmentAdaper(getSupportFragmentManager(), titles);
-        mViewPager.setAdapter(mPageFragmentAdaper);
+        mPageAdaper = new PageAdaper(getSupportFragmentManager(), titles);
+        mViewPager.setAdapter(mPageAdaper);
 
         new AsyncTask<Void, Void, List<Motel>>() {
 
@@ -48,7 +39,7 @@ public class ActivityGirlsList extends AppCompatActivity {
 
             @Override
             protected void onPreExecute() {
-                dialog = ProgressDialog.show(ActivityGirlsList.this, "Aguarde...", "listando pokemons.", true, true);
+                dialog = ProgressDialog.show(ActivityGirlsList.this, "Aguarde...", "listando moteis.", true, true);
             }
 
             @Override
@@ -56,7 +47,7 @@ public class ActivityGirlsList extends AppCompatActivity {
                 //Uma requisição a API Pokemon
                 List<Motel> mMotel = null;
 
-                try {
+                /*try {
                     URL url = new URL("https://www.dropbox.com/home/PGM/moteis.json");
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -80,7 +71,7 @@ public class ActivityGirlsList extends AppCompatActivity {
                     e.printStackTrace();
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }
+                }*/
 
                 return mMotel;
             }
@@ -89,12 +80,12 @@ public class ActivityGirlsList extends AppCompatActivity {
             protected void onPostExecute(List<Motel> mMoteis) {
                 dialog.dismiss();
 
-                PageFragment fragment1 = (PageFragment) mPageFragmentAdaper.getItem(0);
-                PageFragment fragment2 = (PageFragment) mPageFragmentAdaper.getItem(1);
+                FragmentPageView fragment1 = (FragmentPageView) mPageAdaper.getItem(0);
+                FragmentPageView fragment2 = (FragmentPageView) mPageAdaper.getItem(1);
                 fragment1.mMotel = mMoteis.subList(0, 10);
                 fragment2.mMotel = mMoteis.subList(11, 20);
 
-                mPageFragmentAdaper.notifyDataSetChanged();
+                mPageAdaper.notifyDataSetChanged();
 
                 fragment1.arrayAdapter.notifyDataSetChanged();
                 fragment2.arrayAdapter.notifyDataSetChanged();
@@ -152,12 +143,12 @@ public class ActivityGirlsList extends AppCompatActivity {
             protected void onPostExecute(List<Motel> mMoteis) {
                 dialog.dismiss();
 
-                PageFragment fragment1 = (PageFragment) mPageFragmentAdaper.getItem(0);
-                PageFragment fragment2 = (PageFragment) mPageFragmentAdaper.getItem(1);
+                FragmentPageView fragment1 = (FragmentPageView) mPageAdaper.getItem(0);
+                FragmentPageView fragment2 = (FragmentPageView) mPageAdaper.getItem(1);
                 fragment1.pokemons = mMoteis.subList(0, 10);
                 fragment2.pokemons = mMoteis.subList(11, 20);
 
-                mPageFragmentAdaper.notifyDataSetChanged();
+                mPageAdaper.notifyDataSetChanged();
 
                 fragment1.arrayAdapter.notifyDataSetChanged();
                 fragment2.arrayAdapter.notifyDataSetChanged();

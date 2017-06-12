@@ -1,10 +1,10 @@
-package com.mobileprogramming.luxurygirl.adapter;
+package com.mobileprogramming.luxurygirl;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.mobileprogramming.luxurygirl.fragments.PageFragment;
+import com.mobileprogramming.luxurygirl.fragments.FragmentPageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,17 +13,17 @@ import java.util.List;
  * Created by italo on 07/06/2017.
  */
 
-public class PageFragmentAdaper extends FragmentPagerAdapter {
+public class PageAdaper extends FragmentPagerAdapter {
 
     String[] titles;
-    List<PageFragment> pages = new ArrayList<PageFragment>();
+    List<FragmentPageView> pages = new ArrayList<FragmentPageView>();
 
 
-    public PageFragmentAdaper(FragmentManager fm, String[] titles) {
+    public PageAdaper(FragmentManager fm, String[] titles) {
         super(fm);
         this.titles = titles;
-        this.pages.add(new PageFragment());
-        this.pages.add(new PageFragment());
+        this.pages.add(new FragmentPageView());
+        this.pages.add(new FragmentPageView());
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.mobileprogramming.luxurygirl;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.mobileprogramming.luxurygirl.fragments.FragmentMain;
 
@@ -18,5 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fragmentList = (FragmentMain) getSupportFragmentManager().findFragmentById(R.id.fragment_main);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 }

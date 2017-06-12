@@ -21,7 +21,7 @@ import java.util.List;
  * Created by italo on 07/06/2017.
  */
 
-public class PageFragment extends Fragment {
+public class FragmentPageView extends Fragment {
     public List<Motel> mMotel = new ArrayList<Motel>();
     public ArrayAdapter<Motel> arrayAdapter;
 

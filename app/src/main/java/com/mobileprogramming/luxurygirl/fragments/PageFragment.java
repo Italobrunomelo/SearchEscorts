@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.mobileprogramming.luxurygirl.R;
+import com.mobileprogramming.luxurygirl.model.Motel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +22,8 @@ import java.util.List;
  */
 
 public class PageFragment extends Fragment {
-    //public List<Pokemon> pokemons = new ArrayList<Pokemon>();
-    //public ArrayAdapter<Pokemon> arrayAdapter;
+    public List<Motel> mMotel = new ArrayList<Motel>();
+    public ArrayAdapter<Motel> arrayAdapter;
 
     @Nullable
     @Override

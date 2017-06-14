@@ -10,10 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.mobileprogramming.luxurygirl.ActivityGirlsInformations;
 import com.mobileprogramming.luxurygirl.ActivityGirlsList;
 import com.mobileprogramming.luxurygirl.ActivityGirlsRegister;
-import com.mobileprogramming.luxurygirl.ActivityUserRegister;
 import com.mobileprogramming.luxurygirl.R;
 
 /**
@@ -50,9 +48,9 @@ public class FragmentMain extends Fragment {
         });
 
         /*AÇÃO DO IMAGE BUTTON PARA CADASTRO DE NOVA ACOMPANHANTE*/
-        ImageButton mImageButtonEscortNew = (ImageButton) view.findViewById(R.id.imageButtonEscortNew);
+        ImageButton mImageButtonGirlsNew = (ImageButton) view.findViewById(R.id.imageButtonGirlsNew);
 
-        mImageButtonEscortNew.setOnClickListener(new View.OnClickListener() {
+        mImageButtonGirlsNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(getActivity(), ActivityGirlsRegister.class);
@@ -61,9 +59,9 @@ public class FragmentMain extends Fragment {
         });
 
         /*AÇÃO DO TEXT VIEW PARA LOGIN DE ACOMPANHANTE CADASTRADA*/
-        TextView mtextViewLoginEscort = (TextView) view.findViewById(R.id.textViewLoginEscort);
+        TextView mtextViewLoginGirls = (TextView) view.findViewById(R.id.textViewLoginGirls);
 
-        mtextViewLoginEscort.setOnClickListener(new View.OnClickListener() {
+        mtextViewLoginGirls.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(getActivity(), ActivityGirlsRegister.class);

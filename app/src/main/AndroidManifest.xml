@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActitvityPageViewMotel"
+            android:name=".ActitvityPageView"
             android:parentActivityName=".ActivityGirlsList">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -33,7 +33,6 @@
             android:launchMode="singleTop" />
         <activity android:name="com.mobileprogramming.luxurygirl.ActivityGirlsInformations"></activity>
         <activity android:name="com.mobileprogramming.luxurygirl.ActivityGirlsRegister"></activity>
-        <activity android:name="com.mobileprogramming.luxurygirl.ActivityUserRegister"></activity>
     </application>
 
 </manifest>

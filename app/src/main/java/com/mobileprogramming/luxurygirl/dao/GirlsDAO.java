@@ -23,7 +23,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE Girls (name TEXT NOT NULL, age TEXT NOT NULL, information TEXT NOT NULL, " +
-                "contact TEXT NOT NULL, location TEXT NOT NULL, status TEXT NOT NULL);";
+                "contact TEXT NOT NULL, status TEXT NOT NULL);";
         db.execSQL(sql);
     }
 
@@ -36,8 +36,8 @@ public class GirlsDAO extends SQLiteOpenHelper {
 
     //INSERT
     public void insert(Girls girls) {
-        String sql = "INSERT INTO Girls (name,age,information,contact,location,status) " +
-                "VALUES ('" + girls.getmName() + "','" + girls.getmAge() + "','" + girls.getmInformation() + "','" + girls.getmContact() + "','" + girls.getmLocation() + "','" + girls.getmStatus() + "');";
+        String sql = "INSERT INTO Girls (name,age,information,contact,status) " +
+                "VALUES ('" + girls.getmName() + "','" + girls.getmAge() + "','" + girls.getmInformation() + "','" + girls.getmContact() + "','" + girls.getmStatus() + "');";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(sql);
         db.close();
@@ -45,7 +45,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
 
     //DELETE
     public void delete(Girls girls) {
-        String sql = "DELETE FROM Girls WHERE name = '" + girls.getmName() + "' AND age = '" + girls.getmAge() + "' AND information = '" + girls.getmInformation() + "' AND contact = '" + girls.getmContact() + "' AND location = '" + girls.getmLocation() + "';";
+        String sql = "DELETE FROM Girls WHERE name = '" + girls.getmName() + "' AND age = '" + girls.getmAge() + "' AND information = '" + girls.getmInformation() + "' AND contact = '" + girls.getmContact() + "';";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(sql);
         db.close();
@@ -63,7 +63,6 @@ public class GirlsDAO extends SQLiteOpenHelper {
         girls.setmAge(cursor.getString(cursor.getColumnIndex("age")));
         girls.setmInformation(cursor.getString(cursor.getColumnIndex("information")));
         girls.setmContact(cursor.getString(cursor.getColumnIndex("contact")));
-        girls.setmLocation(cursor.getString(cursor.getColumnIndex("location")));
         girls.setmStatus(cursor.getString(cursor.getColumnIndex("status")));
 
         sqLiteDb.close();
@@ -84,7 +83,6 @@ public class GirlsDAO extends SQLiteOpenHelper {
             girls.setmAge(cursor.getString(cursor.getColumnIndex("age")));
             girls.setmInformation(cursor.getString(cursor.getColumnIndex("information")));
             girls.setmContact(cursor.getString(cursor.getColumnIndex("contact")));
-            girls.setmLocation(cursor.getString(cursor.getColumnIndex("location")));
             girls.setmStatus(cursor.getString(cursor.getColumnIndex("status")));
             girl.add(girls);
         }

@@ -54,7 +54,7 @@ public void onClick(View v) {
         });
 
         /*AÇÃO DO IMAGE BUTTON PARA CADASTRO DE NOVA ACOMPANHANTE
-        ImageButton mImageButtonEscortNew = (ImageButton) view.findViewById(R.id.imageButtonEscortNew);
+        ImageButton mImageButtonEscortNew = (ImageButton) view.findViewById(R.id.imageButtonGirlsNew);
 
         mImageButtonEscortNew.setOnClickListener(new View.OnClickListener() {
 @Override
@@ -65,7 +65,7 @@ public void onClick(View v) {
         });
 
         /*AÇÃO DO TEXT VIEW PARA LOGIN DE ACOMPANHANTE CADASTRADA
-        TextView mtextViewLoginEscort = (TextView) view.findViewById(R.id.textViewLoginEscort);
+        TextView mtextViewLoginEscort = (TextView) view.findViewById(R.id.textViewLoginGirls);
 
         mtextViewLoginEscort.setOnClickListener(new View.OnClickListener() {
 @Override

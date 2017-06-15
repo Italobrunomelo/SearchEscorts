@@ -1,18 +1,11 @@
 package com.mobileprogramming.luxurygirl;
 
-import android.app.ProgressDialog;
 import android.content.res.Configuration;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.mobileprogramming.luxurygirl.fragments.FragmentGrilsList;
-import com.mobileprogramming.luxurygirl.fragments.FragmentPageView;
-import com.mobileprogramming.luxurygirl.model.Motel;
-
-import java.util.List;
 
 /**
  * Created by italo on 24/05/2017.

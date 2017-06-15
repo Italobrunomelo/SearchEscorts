@@ -1,33 +1,34 @@
 package com.mobileprogramming.luxurygirl;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-
-import com.mobileprogramming.luxurygirl.fragments.FragmentPageView;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.support.v4.view.PagerAdapter.POSITION_NONE;
 
 /**
  * Created by italo on 07/06/2017.
  */
 
-public class PageAdaper extends FragmentPagerAdapter {
+public class PageAdaper {
 
     String[] titles;
-    List<FragmentPageView> pages = new ArrayList<FragmentPageView>();
+    List<ActitvityPageView> pages = new ArrayList<ActitvityPageView>();
 
 
-    public PageAdaper(FragmentManager fm, String[] titles) {
-        super(fm);
+    public PageAdaper(ActitvityPageView fm, String[] titles) {
+        super(this);
         this.titles = titles;
-        this.pages.add(new FragmentPageView());
-        this.pages.add(new FragmentPageView());
+        this.pages.add(new ActitvityPageView());
+        this.pages.add(new ActitvityPageView());
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public Activity getItem(int position) {
         return pages.get(position);
     }
 

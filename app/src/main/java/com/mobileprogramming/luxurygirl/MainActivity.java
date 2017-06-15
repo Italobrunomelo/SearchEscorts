@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 /**
  * Created by italo on 23/05/2017.
@@ -26,20 +25,35 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mImageButtonEnter = (ImageButton) findViewById(R.id.imageButtonEnter);
-        mImageButtonGirlsNew = (ImageButton) findViewById(R.id.imageButtonGirlsNew);
-    }
-
-    public void onClick(View view){
-        switch (view.getId()){
-            case R.id.imageButtonEnter:
-                Intent iGirlsList = new Intent(this, ActivityGirlsList.class);
+        mImageButtonEnter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iGirlsList = new Intent(MainActivity.this, ActitvityPageView.class);
                 startActivity(iGirlsList);
-                break;
-            case R.id.imageButtonGirlsNew:
-                Intent iNewGirls = new Intent(this, ActivityGirlsRegister.class);
-                startActivity(iNewGirls);
-                break;
-        }
+            }
+        });
+
+        mImageButtonGirlsNew = (ImageButton) findViewById(R.id.imageButtonGirlsNew);
+        mImageButtonGirlsNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iGirlsList = new Intent(MainActivity.this, ActivityGirlsRegister.class);
+                startActivity(iGirlsList);
+            }
+        });
+
+
+        //public void onClick(View view){
+        //    switch (view.getId()){
+        //        case R.id.imageButtonEnter:
+        //           Intent iGirlsList = new Intent(MainActivity.this, ActivityGirlsList.class);
+        //            startActivity(iGirlsList);
+        //           break;
+        //        case R.id.imageButtonGirlsNew:
+        //           Intent iNewGirls = new Intent(MainActivity.this, ActivityGirlsRegister.class);
+        //           startActivity(iNewGirls);
+        //          break;
+        //  }
     }
 
 
@@ -108,4 +122,4 @@ public class MainActivity extends AppCompatActivity {
             super.onStart();
             loadGirls();
         }*/
- }
+}

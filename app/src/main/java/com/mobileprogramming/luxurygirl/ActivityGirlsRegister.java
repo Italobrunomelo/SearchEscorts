@@ -28,7 +28,10 @@ import static android.app.PendingIntent.getActivity;
 
 public class ActivityGirlsRegister extends AppCompatActivity {
 
-    EditText mEditTextName, mEditTextInformation, mEditTextPhone, mEditTextAge;
+    private GirlsDAO mGirlDAO;
+    private Girls mGirls;
+
+    EditText mEditTextEmail,mEditTextName, mEditTextInformation, mEditTextPhone, mEditTextAge;
     Switch mSwitchStatus;
     Button mButtonSaveGirl;
     TextView mTextViewUploadPhoto;
@@ -47,6 +50,10 @@ public class ActivityGirlsRegister extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mGirlDAO = new GirlsDAO(this);
+        mGirls = new Girls();
+
+        mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);
         mEditTextName = (EditText) findViewById(R.id.editTextName);
         mEditTextInformation = (EditText) findViewById(R.id.editTextInformation);
         mEditTextPhone = (EditText) findViewById(R.id.editTextPhone);
@@ -56,19 +63,10 @@ public class ActivityGirlsRegister extends AppCompatActivity {
         mButtonSaveGirl = (Button) findViewById(R.id.buttonSaveGirl);
         mTextViewUploadPhoto = (TextView) findViewById(R.id.textViewUploadPhoto);
 
-    }
-
-    public void onClick(View view){
-        switch (view.getId()){
-            case R.id.textViewUploadPhoto:
-                ActivityGirlsRegister activityGirlsRegister = new ActivityGirlsRegister();
-                activityGirlsRegister.selectImageClick();
-                break;
-
-            case R.id.buttonSaveGirl:
-                GirlsDAO mGirlDAO = new GirlsDAO(getActivity());
-                Girls mGirls = new Girls();
-
+        mButtonSaveGirl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGirls.setmEmail(mEditTextEmail.getText().toString());
                 mGirls.setmName(mEditTextName.getText().toString());
                 mGirls.setmInformation(mEditTextInformation.getText().toString());
                 mGirls.setmContact(mEditTextPhone.getText().toString());
@@ -79,19 +77,33 @@ public class ActivityGirlsRegister extends AppCompatActivity {
                     mGirls.setmStatus("false");
                 }
 
-                mGirlDAO.insert(mGirls);
+                Girls verificaGirl = mGirlDAO.getGirl(mGirls.getmEmail());
+                if (verificaGirl == null){
 
-                /*
-                OnRefreshFormOK activity = (OnRefreshFormOK) getActivity();
-                activity.refresh();*/
+                    mGirlDAO.insert(mGirls);
 
-                /*if (!isLandScape())
-                    getActivity().finish();*/
+                    Toast.makeText(getBaseContext(), R.string.mensage_added_girl, Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(getBaseContext(), R.string.mensage_not_added_girl, Toast.LENGTH_LONG).show();
+                }
 
-                Toast.makeText(this, R.string.mensage_added_girl, Toast.LENGTH_LONG).show();
 
-                break;
-        }
+                //OnRefreshFormOK activity = (OnRefreshFormOK) getActivity();
+                //activity.refresh();
+
+                //if (!isLandScape())
+                //   getActivity().finish();
+            }
+        });
+
+        mImageViewPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityGirlsRegister activityGirlsRegister = new ActivityGirlsRegister();
+                activityGirlsRegister.selectImageClick();
+            }
+        });
+
     }
 
     public void selectImageClick() {
@@ -106,8 +118,8 @@ public class ActivityGirlsRegister extends AppCompatActivity {
         // GUARDA A URI DA IMAGEM
         imageUri = Uri.fromFile(file);
 
-        /*// HABILITA O CORTE DA IMAGEM
-        i.putExtra("crop", "true");*/
+        // HABILITA O CORTE DA IMAGEM
+        i.putExtra("crop", "true");
 
         // LOCAL ONDE A IMAGEM SERÁ SALVA
         i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));

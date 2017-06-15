@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.mobileprogramming.luxurygirl.fragments.FragmentMoteisList;
-import com.mobileprogramming.luxurygirl.fragments.FragmentPageView;
 import com.mobileprogramming.luxurygirl.model.Motel;
 
 import java.util.List;

@@ -24,7 +24,7 @@ import java.util.List;
 
 public class MotelHttp {
 
-    public static final String MOTEIS_URL_JSON = "https://www.dropbox.com/home/PGM/moteis.json";
+    public static final String MOTEIS_URL_JSON = "http://localhost:8080/C:/Users/italo/Desktop/moteis.json";
 
     private static HttpURLConnection connectar(String urlArquivo) throws IOException{
         final int SEGUNDOS = 1000;

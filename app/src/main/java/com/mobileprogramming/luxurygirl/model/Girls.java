@@ -12,11 +12,19 @@ public class Girls implements Serializable {
     private String mAge;
     private String mInformation;
     private String mContact;
-    private String mLocation;
     private String mStatus;
+    private String mEmail;
 
     public Girls() {
 
+    }
+
+    public String getmEmail() {
+        return mEmail;
+    }
+
+    public void setmEmail(String mEmail) {
+        this.mEmail = mEmail;
     }
 
     public String getmName() {
@@ -51,14 +59,6 @@ public class Girls implements Serializable {
         this.mContact = mContact;
     }
 
-    public String getmLocation() {
-        return mLocation;
-    }
-
-    public void setmLocation(String mLocation) {
-        this.mLocation = mLocation;
-    }
-
     public String getmStatus() {
         return mStatus;
     }
@@ -69,7 +69,13 @@ public class Girls implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Girls{" +
+                "mName='" + mName + '\'' +
+                ", mAge='" + mAge + '\'' +
+                ", mInformation='" + mInformation + '\'' +
+                ", mContact='" + mContact + '\'' +
+                ", mStatus='" + mStatus + '\'' +
+                ", mEmail='" + mEmail + '\'' +
+                '}';
     }
-
 }

@@ -26,4 +26,6 @@
     <string name="no_connection">No connection</string>
     <string name="downloading_motel_information">Downloading motels information...</string>
     <string name="failed_to_get_motels">Failed to get motels</string>
+    <string name="mensage_not_added_girl">Girl already registered!</string>
+    <string name="textViewNameList">Name</string>
 </resources>

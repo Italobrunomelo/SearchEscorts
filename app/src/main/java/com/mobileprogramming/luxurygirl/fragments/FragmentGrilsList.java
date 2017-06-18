@@ -1,7 +1,6 @@
 package com.mobileprogramming.luxurygirl.fragments;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.mobileprogramming.luxurygirl.adapter.GirlAdapter;
@@ -20,7 +18,6 @@ import com.mobileprogramming.luxurygirl.R;
 import com.mobileprogramming.luxurygirl.dao.GirlsDAO;
 import com.mobileprogramming.luxurygirl.model.Girls;
 
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 /**
@@ -54,19 +51,13 @@ public class FragmentGrilsList extends Fragment {
         mListGirls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = manager.beginTransaction();
-                Fragment fragmentGirlsInformations = new FragmentGirlsInformations();
-                if(mGirls.get(position) != null){
-                    Bundle mBundle = new Bundle();
-                    mBundle.putSerializable("mGirls",mGirls.get(position));
-                    fragmentGirlsInformations.setArguments(mBundle);
-                }
-                fragmentTransaction.replace(R.id.fragment_girls_informations, fragmentGirlsInformations);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                loadGirlInformation(mGirls.get(position));
             }
         });
+
+        /*if(isLandScape()){
+            loadGirlInformation(null);
+        }*/
 
         return view;
     }
@@ -82,6 +73,33 @@ public class FragmentGrilsList extends Fragment {
         }
 
         return mGirls;
+    }
+
+    private void loadGirlInformation(Girls girl) {
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        Fragment fragmentGirlsInformations = new FragmentGirlsInformations();
+        if(girl != null){
+            Bundle mBundle = new Bundle();
+            mBundle.putSerializable("girl", girl);
+            fragmentGirlsInformations.setArguments(mBundle);
+        }
+        fragmentTransaction.replace(R.id.fragment_girls_informations, fragmentGirlsInformations);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public boolean isLandScape(){
+        Configuration configuration = getResources().getConfiguration();
+        if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+            return true;
+        return false;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mGirlsDAO.getAllGirls();
     }
 
 }

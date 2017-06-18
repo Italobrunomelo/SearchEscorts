@@ -65,15 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
             loadGirls();
 
-        /*
-        //ListView X PageView-> lvCompanions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                loadCompanionsForm(mGirls.get(position));
-            }
-        });
-        */
-
 
 
  /*

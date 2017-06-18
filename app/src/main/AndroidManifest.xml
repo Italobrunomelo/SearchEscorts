@@ -22,16 +22,21 @@
         </activity>
         <activity
             android:name=".ActitvityPageView"
-            android:parentActivityName=".ActivityGirlsList">
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".ActivityGirlsList"
-            android:launchMode="singleTop" />
+            android:name=".ActivityGirlsRegister"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name="com.mobileprogramming.luxurygirl.ActivityGirlsList"/>
         <activity android:name="com.mobileprogramming.luxurygirl.ActivityGirlsInformations"></activity>
-        <activity android:name="com.mobileprogramming.luxurygirl.ActivityGirlsRegister"></activity>
     </application>
 
 </manifest>

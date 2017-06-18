@@ -13,29 +13,19 @@ import com.mobileprogramming.luxurygirl.adapter.AbasPageAdaper;
  */
 
 public class ActitvityPageView extends AppCompatActivity{
-    //AbasPagerAdapter mAbasPagerAdapter;
     ViewPager mViewPager;
-    TabLayout mTabLayout;
-    private AbasPageAdaper mAbasPageAdaper;
+    private TabLayout mTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pageview);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
-
-        ViewPager mViewPager = (ViewPager) findViewById(R.id.activityPagerView);
-        String[] titles = {"Girls", "Motels"};
-        mAbasPageAdaper = new AbasPageAdaper(this, getSupportFragmentManager());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mViewPager = (ViewPager) findViewById(R.id.pager) ;
-        mViewPager.setAdapter(mAbasPageAdaper);
-        mTabLayout = (TabLayout)findViewById(R.id.tabs);
-        mTabLayout.setupWithViewPager(mViewPager);
 
-        //mAbasPagerAdapter = new AbasPagerAdapter(this, getSupportFragmentManager());
-        //mViewPager = (ViewPager) findViewById(R.id.activityPagerView);
-        //mViewPager.setAdapter(mAbasPagerAdapter);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mTabLayout = (TabLayout)findViewById(R.id.tabs);
+        mViewPager.setAdapter(new AbasPageAdaper(getSupportFragmentManager(), getResources().getStringArray(R.array.titles_tab)));
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 }

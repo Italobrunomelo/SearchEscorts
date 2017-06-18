@@ -26,7 +26,6 @@ import com.mobileprogramming.luxurygirl.model.Girls;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.Serializable;
 
 public class ActivityGirlsRegister extends AppCompatActivity {
 
@@ -47,8 +46,10 @@ public class ActivityGirlsRegister extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_girls_register);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
 
         //PERMISSÃO PARA O APP ACESSAR AS FOTOS
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -58,8 +59,6 @@ public class ActivityGirlsRegister extends AppCompatActivity {
             }
         }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         mGirlDAO = new GirlsDAO(this);
         mGirls = new Girls();

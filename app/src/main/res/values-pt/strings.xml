@@ -32,4 +32,8 @@
     <string name="buttonAlterGirl">Alterar</string>
     <string name="buttonRemoveGirl">Remover</string>
     <string name="email_deleted">deletado</string>
+    <string-array name="titles_tab">
+        <item>Garotas</item>
+        <item>Moteis</item>
+    </string-array>
 </resources>

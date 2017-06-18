@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.mobileprogramming.luxurygirl.adapter.AbasPageAdaper;
 import com.mobileprogramming.luxurygirl.fragments.FragmentGrilsList;
 
 /**
@@ -15,7 +16,7 @@ public class ActivityGirlsList extends AppCompatActivity {
 
     FragmentGrilsList mFragmentGrilsList;
 
-    private PageAdaper mPageAdaper;
+    private AbasPageAdaper mAbasPageAdaper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

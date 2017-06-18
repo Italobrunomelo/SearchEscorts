@@ -1,6 +1,9 @@
 package com.mobileprogramming.luxurygirl.fragments;
 
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,12 +13,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.mobileprogramming.luxurygirl.ActivityGirlsRegister;
 import com.mobileprogramming.luxurygirl.dao.GirlsDAO;
 import com.mobileprogramming.luxurygirl.model.Girls;
 import com.mobileprogramming.luxurygirl.R;
 
+import java.io.ByteArrayInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,49 +34,56 @@ import java.util.List;
  */
 
 public class FragmentGirlsInformations extends Fragment {
-/*
+
+    private Girls mGirl;
+    private GirlsDAO mGirlsDAO;
+
+    /*
     List<Girls> mListGirl = new ArrayList<Girls>();
     private ArrayAdapter<String> mAdapter;
     private ListView lvCompanions;
 */
+
+    public FragmentGirlsInformations() {
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_girls_informations, container, false );
-        /*
-        *Pegar Referência  do ListView e Button
-        */
+        View view = inflater.inflate(R.layout.activity_girls_informations, container, false);
+        mGirlsDAO = new GirlsDAO(getActivity());
+        mGirl = new Girls();
 
-        //ListView X PageView-> lvCompanions = (ListView) view.findViewById(R.id.listViewCompanions);
+        final TextView textViewNameInformation = (TextView) view.findViewById(R.id.textViewNameInformation);
+        final TextView textViewAgeInformation = (TextView) view.findViewById(R.id.textViewAgeInformation);
+        final TextView textViewInformationInformation = (TextView) view.findViewById(R.id.textViewInformationInformation);
+        final TextView textViewContactInformation = (TextView) view.findViewById(R.id.textViewContactInformation);
+        final ImageView imageViewPhoto = (ImageView) view.findViewById(R.id.imageViewPhoto);
+        final Button buttonRemoveGirl = (Button) view.findViewById(R.id.buttonRemoveGirl);
 
-        //Button buttonAdd = (Button) view.findViewById(R.id.buttonAdd);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            mGirl = (Girls) bundle.getSerializable("mListGirlDAO");
 
-        //loadGirls();
+            textViewNameInformation.setText(mGirl.getmName());
+            textViewAgeInformation.setText(mGirl.getmAge());
+            textViewInformationInformation.setText(mGirl.getmInformation());
+            textViewContactInformation.setText(mGirl.getmContact());
 
-        /*
-        //ListView X PageView-> lvCompanions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                loadGirlsForm(mGirls.get(position));
-            }
-        });
-        */
+            byte[] outImagem = mGirl.getmImagem();
+            ByteArrayInputStream imageStream = new ByteArrayInputStream(outImagem);
+            Bitmap imageBitmap = BitmapFactory.decodeStream(imageStream);
+            imageViewPhoto.setImageBitmap(imageBitmap);
+        }
 
-        /*
-        *COMPORTAMENTO DO BOTÃO buttonAdd
-
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
+        buttonRemoveGirl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(isLandScape()){
-                    loadGirlsForm(null);
-                }else{
-                    Intent it = new Intent(getActivity(), ActivityGirlsRegister.class);
-                    startActivity(it);
-                }
+                String emailDeletado = mGirlsDAO.delete(mGirl.getmEmail());
+                Toast.makeText(getActivity(), emailDeletado + " " + R.string.email_deleted, Toast.LENGTH_LONG).show();
             }
-        });*/
+        });
+
         return view;
     }
 
@@ -92,23 +109,6 @@ public class FragmentGirlsInformations extends Fragment {
         tx.addToBackStack(null);
         tx.commit();
     }
-
-    public void loadGirls() {
-
-        GirlsDAO dao = new GirlsDAO(getActivity());
-        mListGirl = dao.getAllGirls();
-
-        List<String> mGirlsNames = new ArrayList<String>();
-
-        for (Girls mGirls : this.mListGirl) {
-            mGirlsNames.add(mGirls.getmName());
-        }
-
-        mAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1,mGirlsNames);
-        lvCompanions.setAdapter(mAdapter);
-    }
-
 
     @Override
     public void onStart() {

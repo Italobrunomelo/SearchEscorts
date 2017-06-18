@@ -1,19 +1,26 @@
 package com.mobileprogramming.luxurygirl.fragments;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.mobileprogramming.luxurygirl.GirlAdapter;
+import com.mobileprogramming.luxurygirl.adapter.GirlAdapter;
 import com.mobileprogramming.luxurygirl.R;
 import com.mobileprogramming.luxurygirl.dao.GirlsDAO;
 import com.mobileprogramming.luxurygirl.model.Girls;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 /**
@@ -38,8 +45,28 @@ public class FragmentGrilsList extends Fragment {
         mGirlsDAO = new GirlsDAO(getActivity());
 
         mListGirls = (ListView) view.findViewById(R.id.listViewGirls);
-        ArrayAdapter adapter = new GirlAdapter(getContext(), addGirl());
+
+        mGirls = addGirl();
+
+        ArrayAdapter adapter = new GirlAdapter(getContext(), mGirls);
         mListGirls.setAdapter(adapter);
+
+        mListGirls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = manager.beginTransaction();
+                Fragment fragmentGirlsInformations = new FragmentGirlsInformations();
+                if(mGirls.get(position) != null){
+                    Bundle mBundle = new Bundle();
+                    mBundle.putSerializable("mGirls",mGirls.get(position));
+                    fragmentGirlsInformations.setArguments(mBundle);
+                }
+                fragmentTransaction.replace(R.id.fragment_girls_informations, fragmentGirlsInformations);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
 
         return view;
     }
@@ -50,6 +77,7 @@ public class FragmentGrilsList extends Fragment {
         for (int j = 0; j < mListGirlDAO.size(); j++) {
             mGirl.setmName(mListGirlDAO.get(j).getmName());
             mGirl.setmAge(mListGirlDAO.get(j).getmAge());
+            mGirl.setmImagem(mListGirlDAO.get(j).getmImagem());
             mGirls.add(mGirl);
         }
 

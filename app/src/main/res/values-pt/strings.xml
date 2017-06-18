@@ -22,10 +22,14 @@
     <string name="ButtonAlertImage">Galeria</string>
     <string name="loading_image">Carregando imagem de?</string>
     <string name="mesage_added_girl">Acompanhante adicionada com sucesso!</string>
-    <string name="select_picture_title">Select the picture</string>
-    <string name="no_connection">No connection</string>
-    <string name="downloading_motel_information">Downloading motels information...</string>
+    <string name="select_picture_title">Selecione a imagem</string>
+    <string name="no_connection">Sem conexão</string>
+    <string name="downloading_motel_information">Baixando informações dos moteis...</string>
     <string name="failed_to_get_motels">Failed to get motels</string>
     <string name="mensage_not_added_girl">Girl already registered!</string>
-    <string name="textViewNameList">Name</string>
+    <string name="textViewNameList">Nome</string>
+    <string name="Please_enter_email">Por favor entre com email</string>
+    <string name="buttonAlterGirl">Alterar</string>
+    <string name="buttonRemoveGirl">Remover</string>
+    <string name="email_deleted">deletado</string>
 </resources>

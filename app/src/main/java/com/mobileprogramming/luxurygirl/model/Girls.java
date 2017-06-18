@@ -14,6 +14,7 @@ public class Girls implements Serializable {
     private String mContact;
     private String mStatus;
     private String mEmail;
+    private byte[] mImagem;
 
     public Girls() {
 
@@ -65,6 +66,14 @@ public class Girls implements Serializable {
 
     public void setmStatus(String mStatus) {
         this.mStatus = mStatus;
+    }
+
+    public byte[] getmImagem() {
+        return mImagem;
+    }
+
+    public void setmImagem(byte[] mImagem) {
+        this.mImagem = mImagem;
     }
 
     @Override

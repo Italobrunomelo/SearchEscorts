@@ -28,4 +28,8 @@
     <string name="failed_to_get_motels">Failed to get motels</string>
     <string name="mensage_not_added_girl">Girl already registered!</string>
     <string name="textViewNameList">Name</string>
+    <string name="Please_enter_email">Please enter email</string>
+    <string name="buttonAlterGirl">Alter</string>
+    <string name="buttonRemoveGirl">Remove</string>
+    <string name="email_deleted">deleted</string>
 </resources>

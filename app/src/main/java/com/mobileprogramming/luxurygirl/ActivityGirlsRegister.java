@@ -1,13 +1,15 @@
 package com.mobileprogramming.luxurygirl;
 
-import android.content.ContentResolver;
-import android.content.Context;
+import android.Manifest;
 import android.content.Intent;
-import android.content.res.Configuration;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,30 +24,39 @@ import android.widget.Toast;
 import com.mobileprogramming.luxurygirl.dao.GirlsDAO;
 import com.mobileprogramming.luxurygirl.model.Girls;
 
-import java.io.File;
-
-import static android.app.PendingIntent.getActivity;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 
 public class ActivityGirlsRegister extends AppCompatActivity {
 
     private GirlsDAO mGirlDAO;
     private Girls mGirls;
 
-    EditText mEditTextEmail,mEditTextName, mEditTextInformation, mEditTextPhone, mEditTextAge;
+    EditText mEditTextEmail, mEditTextName, mEditTextInformation, mEditTextPhone, mEditTextAge;
     Switch mSwitchStatus;
-    Button mButtonSaveGirl;
+    Button mButtonSaveGirl,buttonAlterGirl;
     TextView mTextViewUploadPhoto;
-
-    private static final int SELECT_PICTURE = 1;
     private ImageView mImageViewPhoto;
+    private Bitmap mImagemGaleria;
 
-    private Uri imageUri;
-    private File file;
+    private final int SELECT_PICTURE = 1;
+    private final int PERMISSAO_REQUEST = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_girls_register);
+
+        Intent intent = getIntent();
+
+        //PERMISSÃO PARA O APP ACESSAR AS FOTOS
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSAO_REQUEST);
+            }
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -60,8 +71,40 @@ public class ActivityGirlsRegister extends AppCompatActivity {
         mEditTextAge = (EditText) findViewById(R.id.editTextAge);
         mSwitchStatus = (Switch) findViewById(R.id.switchStatus);
         mImageViewPhoto = (ImageView) findViewById(R.id.imageViewPhoto);
+        buttonAlterGirl = (Button) findViewById(R.id.buttonAlterGirl);
         mButtonSaveGirl = (Button) findViewById(R.id.buttonSaveGirl);
         mTextViewUploadPhoto = (TextView) findViewById(R.id.textViewUploadPhoto);
+
+        mTextViewUploadPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, SELECT_PICTURE);
+            }
+        });
+
+        buttonAlterGirl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mEditTextEmail == null){
+                    Toast.makeText(getBaseContext(), "Favor inserir email", Toast.LENGTH_LONG).show();
+                }else {
+                    mGirls = mGirlDAO.getGirl(mEditTextEmail.toString());
+
+                    mEditTextName.setText(mGirls.getmName());
+                    mEditTextAge.setText(mGirls.getmAge());
+                    mEditTextInformation.setText(mGirls.getmInformation());
+                    mEditTextPhone.setText(mGirls.getmContact());
+                    if(mGirls.getmStatus() == "true"){
+                        mSwitchStatus.isChecked();
+                    }
+                    byte[] outImagem = mGirls.getmImagem();
+                    ByteArrayInputStream imageStream = new ByteArrayInputStream(outImagem);
+                    Bitmap imageBitmap = BitmapFactory.decodeStream(imageStream);
+                    mImageViewPhoto.setImageBitmap(imageBitmap);
+                }
+            }
+        });
 
         mButtonSaveGirl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,13 +120,16 @@ public class ActivityGirlsRegister extends AppCompatActivity {
                     mGirls.setmStatus("false");
                 }
 
+                //INSERINDO IMAGEM NA BASE
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                mImagemGaleria.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                mGirls.setmImagem(stream.toByteArray());
+
                 Girls verificaGirl = mGirlDAO.getGirl(mGirls.getmEmail());
-                if (verificaGirl == null){
-
+                if (verificaGirl == null) {
                     mGirlDAO.insert(mGirls);
-
                     Toast.makeText(getBaseContext(), R.string.mensage_added_girl, Toast.LENGTH_LONG).show();
-                }else {
+                } else {
                     Toast.makeText(getBaseContext(), R.string.mensage_not_added_girl, Toast.LENGTH_LONG).show();
                 }
 
@@ -95,90 +141,43 @@ public class ActivityGirlsRegister extends AppCompatActivity {
                 //   getActivity().finish();
             }
         });
-
-        mImageViewPhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ActivityGirlsRegister activityGirlsRegister = new ActivityGirlsRegister();
-                activityGirlsRegister.selectImageClick();
-            }
-        });
-
-    }
-
-    public void selectImageClick() {
-        // INTENT DA GALERIA
-        Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-        // CRIA O ARQUIVO PARA IMAGEM
-        file = new File(Environment.getExternalStorageDirectory(),
-                //System.currentTimeMillis() + R.string.editTextNome + ".jpg");
-                System.currentTimeMillis() + ".jpg");
-
-        // GUARDA A URI DA IMAGEM
-        imageUri = Uri.fromFile(file);
-
-        // HABILITA O CORTE DA IMAGEM
-        i.putExtra("crop", "true");
-
-        // LOCAL ONDE A IMAGEM SERÁ SALVA
-        i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
-
-        startActivityForResult(Intent.createChooser(i, "Select the picture"), SELECT_PICTURE);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Uri selectedImage = data.getData();
+            String[] filePath = {MediaStore.Images.Media.DATA};
+            Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
+            c.moveToFirst();
 
-        if (requestCode == SELECT_PICTURE && resultCode == RESULT_OK && null != data) {
-            ContentResolver cr = getContentResolver();
-            Uri selectedImage = Uri.fromFile(file);
-            getContentResolver().notifyChange(selectedImage, null);
-            Bitmap bitmap;
-            try {
-                bitmap = android.provider.MediaStore.Images.Media.getBitmap(
-                        cr, selectedImage);
-                //bitmap = Bitmap.createBitmap(bitmap, 0, 0, 600, 600);
-                ImageView imageView = (ImageView) mImageViewPhoto.findViewById(R.id.imageViewPhoto);
-                imageView.setImageBitmap(bitmap);
-            } catch (Exception e) {
-                Toast.makeText(this, "Falha ao carregar a imagem",
-                        Toast.LENGTH_SHORT).show();
-            }
+            int columnIndex = c.getColumnIndex(filePath[0]);
+            String picturePath = c.getString(columnIndex);
+            c.close();
 
+            mImagemGaleria = (BitmapFactory.decodeFile(picturePath));
+            mImageViewPhoto.setImageBitmap(mImagemGaleria);
         }
-
-        /*
-        RETORNO DA SELEÇÃO DA IMAGEM DA GALERIA
-
-        if (requestCode == SELECT_PICTURE && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = imageUri;
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-            Cursor cursor = applicationContext.getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-            cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            Bitmap imagemGaleria;
-            imagemGaleria = (BitmapFactory.decodeFile(picturePath));
-            //imagemGaleria = BitmapFactory.decodeResource(getResources(),columnIndex);
-            cursor.close();
-            ImageView imageView = (ImageView) mImageViewPhoto.findViewById(R.id.imageViewPhoto);
-            //imagemGaleria = BitmapFactory.decodeResource(getResources(), R.drawable.girls);
-            imagemGaleria = Bitmap.createBitmap(imagemGaleria, 0, 0, 400, 400);
-            imageView.setImageBitmap(imagemGaleria);
-
-            //Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.girls);
-            //bm = Bitmap.createBitmap(bm, 0, 0, 400, 400);
-            //imageView.setImageBitmap(bm);
-
-            //imageView.setImageBitmap(imagemGaleria);
-        }*/
     }
+
+    //PERMISSÃO OK OU NEGADA
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (requestCode == PERMISSAO_REQUEST) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // A permissão foi concedida. Pode continuar
+            }
+        } else {
+            // A permissão foi negada. Precisa ver o que deve ser desabilitado
+        }
+        return;
+    }
+
+}
 
 /*
     public interface OnRefreshFormOK {
         public void refresh();
     }*/
 
-}

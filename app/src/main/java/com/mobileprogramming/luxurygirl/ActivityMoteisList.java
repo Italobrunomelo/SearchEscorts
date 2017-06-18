@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.mobileprogramming.luxurygirl.adapter.AbasPageAdaper;
 import com.mobileprogramming.luxurygirl.fragments.FragmentMoteisList;
 import com.mobileprogramming.luxurygirl.model.Motel;
 
@@ -19,9 +20,9 @@ public class ActivityMoteisList extends AppCompatActivity {
 
     FragmentMoteisList mFragmentMoteisList;
 
-    private PageAdaper mPageAdaper;
+    private AbasPageAdaper mAbasPageAdaper;
 
-    public void onCreate (Bundle savedInstanceSate){
+    public void onCreate(Bundle savedInstanceSate) {
         super.onCreate(savedInstanceSate);
         mFragmentMoteisList = (FragmentMoteisList) getSupportFragmentManager().findFragmentById(R.id.fragment_moteis_list);
 
@@ -71,22 +72,22 @@ public class ActivityMoteisList extends AppCompatActivity {
                 return motel;
             }
 
-            @Override
+            /*@Override
             protected void onPostExecute(List<Motel> moteis) {
                 dialog.dismiss();
 
-                FragmentPageView fragment1 = (FragmentPageView) mPageAdaper.getItem(0);
-                FragmentPageView fragment2 = (FragmentPageView) mPageAdaper.getItem(1);
+                FragmentPageView fragment1 = (FragmentPageView) mAbasPageAdaper.getItem(0);
+                FragmentPageView fragment2 = (FragmentPageView) mAbasPageAdaper.getItem(1);
                 fragment1.mMotel = moteis.subList(0, 10);
                 fragment2.mMotel = moteis.subList(11, 20);
 
-                mPageAdaper.notifyDataSetChanged();
+                mAbasPageAdaper.notifyDataSetChanged();
 
                 fragment1.arrayAdapter.notifyDataSetChanged();
                 fragment2.arrayAdapter.notifyDataSetChanged();
 
             }
-        }.execute();
+        }.execute();*/
 
         /*new AsyncTask<Void, Void, List<Motel>>() {
 
@@ -135,17 +136,18 @@ public class ActivityMoteisList extends AppCompatActivity {
             protected void onPostExecute(List<Motel> mMoteis) {
                 dialog.dismiss();
 
-                FragmentPageView fragment1 = (FragmentPageView) mPageAdaper.getItem(0);
-                FragmentPageView fragment2 = (FragmentPageView) mPageAdaper.getItem(1);
+                FragmentPageView fragment1 = (FragmentPageView) mAbasPageAdaper.getItem(0);
+                FragmentPageView fragment2 = (FragmentPageView) mAbasPageAdaper.getItem(1);
                 fragment1.pokemons = mMoteis.subList(0, 10);
                 fragment2.pokemons = mMoteis.subList(11, 20);
 
-                mPageAdaper.notifyDataSetChanged();
+                mAbasPageAdaper.notifyDataSetChanged();
 
                 fragment1.arrayAdapter.notifyDataSetChanged();
                 fragment2.arrayAdapter.notifyDataSetChanged();
 
             }
         }.execute();*/
+        };
     }
 }

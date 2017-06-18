@@ -22,8 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="1"
-                android:src="@drawable/girls" />
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,8 +47,7 @@
                         android:id="@+id/textViewNameInformation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@+id/textViewLabelName"
-                        android:text="teste" />
+                        android:layout_marginLeft="@+id/textViewLabelName" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -68,8 +66,7 @@
                         android:id="@+id/textViewAgeInformation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@+id/textViewLabelAge"
-                        android:text="teste" />
+                        android:layout_marginLeft="@+id/textViewLabelAge" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -94,8 +91,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@+id/textViewInformationInformation"
                             android:inputType="textMultiLine"
-                            android:maxLines="3"
-                            android:text="teste" />
+                            android:maxLines="3" />
                     </ScrollView>
                 </LinearLayout>
 
@@ -103,33 +99,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textViewLabelLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Location: " />
-
-                    <TextView
-                        android:id="@+id/textViewLocationInformation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@+id/textViewLabelLocation"
-                        android:autoLink="map"
-                        android:inputType="textMultiLine"
-                        android:text="teste" />
-
-                    <ImageButton
-                        android:id="@+id/imageButtonEscortLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_location_on_black_24dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
@@ -143,16 +112,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@+id/textViewLabelContact"
-                        android:autoLink="phone"
-                        android:text="teste" />
-
-                    <ImageButton
-                        android:id="@+id/imageButtonEscortPhone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_phone_black_24dp" />
+                        android:autoLink="phone" />
 
                 </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <Button
+                        android:id="@+id/buttonRemoveGirl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:text="@string/buttonRemoveGirl" />
+                </FrameLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

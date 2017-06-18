@@ -5,9 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.renderscript.Sampler;
 
 import com.mobileprogramming.luxurygirl.model.Girls;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +38,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE '" + TABELA + "' ('" + EMAIL + "' TEXT NOT NULL, '" + NAME + "' TEXT NOT NULL, '" + AGE + "' TEXT NOT NULL, '" + INFORMATION_GIRL + "' TEXT NOT NULL, '" + CONTACT + "' TEXT NOT NULL, '" + STATUS + "' TEXT NOT NULL);";
+        String sql = "CREATE TABLE '" + TABELA + "' ('" + EMAIL + "' TEXT NOT NULL, '" + NAME + "' TEXT NOT NULL, '" + AGE + "' TEXT NOT NULL, '" + INFORMATION_GIRL + "' TEXT NOT NULL, '" + CONTACT + "' TEXT NOT NULL, '" + STATUS + "' TEXT NOT NULL, imagem BOLB);";
         db.execSQL(sql);
     }
 
@@ -63,7 +65,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
         values.put(INFORMATION_GIRL, girls.getmInformation());
         values.put(CONTACT, girls.getmContact());
         values.put(STATUS, girls.getmStatus());
-
+        values.put("imagem", girls.getmImagem());
         db.insert(TABELA, null, values);
         db.close();
     }
@@ -72,17 +74,31 @@ public class GirlsDAO extends SQLiteOpenHelper {
     public String updateGirl(Girls girls) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(EMAIL, girls.getmEmail());
-        values.put(NAME, girls.getmName());
-        values.put(AGE, girls.getmAge());
-        values.put(INFORMATION_GIRL, girls.getmInformation());
-        values.put(CONTACT, girls.getmContact());
-        values.put(STATUS, girls.getmStatus());
+        String name;
+        if (girls.getmImagem() != null) {
+            values.put(EMAIL, girls.getmEmail());
+            values.put(NAME, girls.getmName());
+            values.put(AGE, girls.getmAge());
+            values.put(INFORMATION_GIRL, girls.getmInformation());
+            values.put(CONTACT, girls.getmContact());
+            values.put(STATUS, girls.getmStatus());
+            values.put("imagem", girls.getmImagem());
 
-        String name = valueOf(db.update(TABELA, values, NAME + " = ?", new String[]{girls.getmName()}));
-        db.insert(TABELA, null, values);
-        db.close();
+            name = valueOf(db.update(TABELA, values, NAME + " = ?", new String[]{girls.getmName()}));
+            db.insert(TABELA, null, values);
+            db.close();
+        }else {
+            values.put(EMAIL, girls.getmEmail());
+            values.put(NAME, girls.getmName());
+            values.put(AGE, girls.getmAge());
+            values.put(INFORMATION_GIRL, girls.getmInformation());
+            values.put(CONTACT, girls.getmContact());
+            values.put(STATUS, girls.getmStatus());
 
+            name = valueOf(db.update(TABELA, values, NAME + " = ?", new String[]{girls.getmName()}));
+            db.insert(TABELA, null, values);
+            db.close();
+        }
         return name;
     }
 
@@ -116,6 +132,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
             girls.setmInformation(cursor.getString(cursor.getColumnIndex(INFORMATION_GIRL)));
             girls.setmContact(cursor.getString(cursor.getColumnIndex(CONTACT)));
             girls.setmStatus(cursor.getString(cursor.getColumnIndex(STATUS)));
+            girls.setmImagem(cursor.getBlob(cursor.getColumnIndex("imagem")));
 
             sqLiteDb.close();
 
@@ -138,6 +155,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
             girls.setmInformation(cursor.getString(cursor.getColumnIndex(INFORMATION_GIRL)));
             girls.setmContact(cursor.getString(cursor.getColumnIndex(CONTACT)));
             girls.setmStatus(cursor.getString(cursor.getColumnIndex(STATUS)));
+            girls.setmImagem(cursor.getBlob(cursor.getColumnIndex("imagem")));
             girl.add(girls);
         }
 

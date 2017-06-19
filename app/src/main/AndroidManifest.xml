@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mobileprogramming.luxurygirl">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.mobileprogramming.luxurygirl.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,14 +29,15 @@
         </activity>
         <activity
             android:name=".ActivityGirlsRegister"
-            android:parentActivityName=".MainActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name="com.mobileprogramming.luxurygirl.ActivityGirlsList"/>
-        <activity android:name="com.mobileprogramming.luxurygirl.ActivityGirlsInformations"></activity>
+        <activity android:name=".ActivityGirlsList" />
+        <activity android:name=".ActivityGirlsInformations">
+        </activity>
+        <activity android:name=".ActivityMoteisList" />
     </application>
-
 </manifest>

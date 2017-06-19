@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -88,55 +89,13 @@ public class FragmentMoteisList extends Fragment {
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
-
-            //dialog = ProgressDialog.show(getActivity(), "Aguarde...", "listando moteis", true, true);
-
             exibirProgress(true);
-
-            /*if(true){
-                mTextMensagem.setText(R.string.downloading_motel_information);
-            }
-
-            mTextMensagem.setVisibility(true ? View.VISIBLE : View.GONE);
-            mProgressBar.setVisibility(true ? View.VISIBLE : View.GONE);*/
         }
 
         @Override
         protected List<Motel> doInBackground(Void... params){
             return MotelHttp.carregarMotelJson();
 
-
-
-            //Uma requisição a API Pokemon
-            /*List<Motel> moteis = null;
-
-            try {
-                URL url = new URL("http://10.0.2.2/moteis.json");
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-                connection.connect();
-
-                Scanner scanner = new Scanner(connection.getInputStream());
-                String json = scanner.next();
-
-                Gson gson = new Gson();
-                JSONObject jsonObject = new JSONObject(json);
-                JSONArray jsonArray = jsonObject.getJSONArray("results");
-
-                Type type = new TypeToken<List<Motel>>(){}.getType();
-                moteis = gson.fromJson(jsonArray.toString(),type);
-
-
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            return moteis*/
         }
 
         @Override
@@ -148,6 +107,7 @@ public class FragmentMoteisList extends Fragment {
                 mMoteis.clear();
                 mMoteis.addAll(moteis);
                 mAdapter.notifyDataSetChanged();
+                mListView.setAdapter((ListAdapter) moteis);
             }else {
                 mTextMensagem.setText(R.string.failed_to_get_motels);
             }

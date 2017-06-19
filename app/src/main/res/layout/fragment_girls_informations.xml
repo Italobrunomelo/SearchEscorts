@@ -14,7 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@color/colorPrimaryDark"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/girls"/>
     </LinearLayout>
 
 
@@ -139,7 +140,5 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <include layout="@layout/toolbar" />
 
 </LinearLayout>

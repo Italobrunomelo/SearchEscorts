@@ -84,25 +84,6 @@ public class MotelHttp {
         }
 
         return moteis;
-
-
-
-            /*HttpURLConnection conexao = connectar(MOTEIS_URL_JSON);
-
-            int resposta = conexao.getResponseCode();
-            if(resposta == HttpURLConnection.HTTP_OK){
-                InputStream is = conexao.getInputStream();
-                JSONObject json = new JSONObject(bytesParaString(is));
-
-                return LerJsonMotel(json);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return null;*/
     }
 
     private static List<Motel> LerJsonMotel(JSONObject json) throws JSONException{

@@ -32,7 +32,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
     private static final String INFORMATION_GIRL = "information";
     private static final String CONTACT = "contact";
     private static final String STATUS = "status";
-    private static final String[] COLUNAS = {NAME, AGE, INFORMATION_GIRL, CONTACT, STATUS};
+    //private static final String[] COLUNAS = {NAME, AGE, INFORMATION_GIRL, CONTACT, STATUS};
 
     public GirlsDAO(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

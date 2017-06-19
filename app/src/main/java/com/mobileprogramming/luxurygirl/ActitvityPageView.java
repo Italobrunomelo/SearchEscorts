@@ -1,6 +1,7 @@
 package com.mobileprogramming.luxurygirl;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -49,4 +50,11 @@ public class ActitvityPageView extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }*/
+
+    public boolean isLandScape() {
+        Configuration configuration = getResources().getConfiguration();
+        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+            return true;
+        return false;
+    }
 }

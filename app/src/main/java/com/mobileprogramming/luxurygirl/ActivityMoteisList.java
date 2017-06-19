@@ -6,11 +6,23 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.mobileprogramming.luxurygirl.adapter.AbasPageAdaper;
 import com.mobileprogramming.luxurygirl.fragments.FragmentMoteisList;
 import com.mobileprogramming.luxurygirl.model.Motel;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by italo on 14/06/2017.
@@ -19,8 +31,6 @@ import java.util.List;
 public class ActivityMoteisList extends AppCompatActivity {
 
     FragmentMoteisList mFragmentMoteisList;
-
-    private AbasPageAdaper mAbasPageAdaper;
 
     public void onCreate(Bundle savedInstanceSate) {
         super.onCreate(savedInstanceSate);
@@ -40,11 +50,10 @@ public class ActivityMoteisList extends AppCompatActivity {
 
             @Override
             protected List<Motel> doInBackground(Void... params) {
-                //Uma requisição a API Pokemon
                 List<Motel> motel = null;
 
-                /*try {
-                    URL url = new URL("https://www.dropbox.com/home/PGM/moteis.json");
+                try {
+                    URL url = new URL("http://10.0.2.2/moteis.json");
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
                     connection.connect();
@@ -67,87 +76,17 @@ public class ActivityMoteisList extends AppCompatActivity {
                     e.printStackTrace();
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }*/
+                }
 
                 return motel;
             }
 
-            /*@Override
+            @Override
             protected void onPostExecute(List<Motel> moteis) {
                 dialog.dismiss();
 
-                FragmentPageView fragment1 = (FragmentPageView) mAbasPageAdaper.getItem(0);
-                FragmentPageView fragment2 = (FragmentPageView) mAbasPageAdaper.getItem(1);
-                fragment1.mMotel = moteis.subList(0, 10);
-                fragment2.mMotel = moteis.subList(11, 20);
-
-                mAbasPageAdaper.notifyDataSetChanged();
-
-                fragment1.arrayAdapter.notifyDataSetChanged();
-                fragment2.arrayAdapter.notifyDataSetChanged();
-
             }
-        }.execute();*/
-
-        /*new AsyncTask<Void, Void, List<Motel>>() {
-
-            public ProgressDialog dialog;
-
-            @Override
-            protected void onPreExecute() {
-                dialog = ProgressDialog.show(ViewpagerActivity.this, "Aguarde...", "listando pokemons.", true, true);
-            }
-
-            @Override
-            protected List<Motel> doInBackground(Void... params) {
-                //Uma requisição a API Pokemon
-                List<Motel> mMotel = null;
-
-                try {
-                    URL url = new URL("http://pokeapi.co/api/v2/pokemon");
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-                    connection.connect();
-
-                    Scanner scanner = new Scanner(connection.getInputStream());
-                    String json = scanner.next();
-
-                    Gson gson = new Gson();
-                    JSONObject jsonObject = new JSONObject(json);
-                    JSONArray jsonArray = jsonObject.getJSONArray("results");
-
-                    Type type = new TypeToken<List<Motel>>() {
-                    }.getType();
-                    mMotel = gson.fromJson(jsonArray.toString(), type);
-
-
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                return mMotel;
-            }
-
-            @Override
-            protected void onPostExecute(List<Motel> mMoteis) {
-                dialog.dismiss();
-
-                FragmentPageView fragment1 = (FragmentPageView) mAbasPageAdaper.getItem(0);
-                FragmentPageView fragment2 = (FragmentPageView) mAbasPageAdaper.getItem(1);
-                fragment1.pokemons = mMoteis.subList(0, 10);
-                fragment2.pokemons = mMoteis.subList(11, 20);
-
-                mAbasPageAdaper.notifyDataSetChanged();
-
-                fragment1.arrayAdapter.notifyDataSetChanged();
-                fragment2.arrayAdapter.notifyDataSetChanged();
-
-            }
-        }.execute();*/
-        };
+        }.execute();
     }
 }
+

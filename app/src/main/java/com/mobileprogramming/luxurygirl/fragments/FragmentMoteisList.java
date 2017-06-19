@@ -1,5 +1,6 @@
 package com.mobileprogramming.luxurygirl.fragments;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,6 +30,7 @@ public class FragmentMoteisList extends Fragment {
     TextView mTextMensagem;
     ProgressBar mProgressBar;
     ArrayAdapter<Motel> mAdapter;
+    ProgressDialog dialog;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -68,10 +70,9 @@ public class FragmentMoteisList extends Fragment {
 
     public void exibirProgress(boolean exibir){
         if(exibir){
-            mTextMensagem.setText(R.string.downloading_motel_information);
+            dialog = ProgressDialog.show(getActivity(), "Aguarde...", "listando moteis", true, true);
         }
 
-        mTextMensagem.setVisibility(exibir ? View.VISIBLE : View.GONE);
         mProgressBar.setVisibility(exibir ? View.VISIBLE : View.GONE);
     }
 
@@ -87,12 +88,55 @@ public class FragmentMoteisList extends Fragment {
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
+
+            //dialog = ProgressDialog.show(getActivity(), "Aguarde...", "listando moteis", true, true);
+
             exibirProgress(true);
+
+            /*if(true){
+                mTextMensagem.setText(R.string.downloading_motel_information);
+            }
+
+            mTextMensagem.setVisibility(true ? View.VISIBLE : View.GONE);
+            mProgressBar.setVisibility(true ? View.VISIBLE : View.GONE);*/
         }
 
         @Override
-        protected List<Motel> doInBackground(Void... strings){
+        protected List<Motel> doInBackground(Void... params){
             return MotelHttp.carregarMotelJson();
+
+
+
+            //Uma requisição a API Pokemon
+            /*List<Motel> moteis = null;
+
+            try {
+                URL url = new URL("http://10.0.2.2/moteis.json");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+                connection.connect();
+
+                Scanner scanner = new Scanner(connection.getInputStream());
+                String json = scanner.next();
+
+                Gson gson = new Gson();
+                JSONObject jsonObject = new JSONObject(json);
+                JSONArray jsonArray = jsonObject.getJSONArray("results");
+
+                Type type = new TypeToken<List<Motel>>(){}.getType();
+                moteis = gson.fromJson(jsonArray.toString(),type);
+
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return moteis*/
         }
 
         @Override

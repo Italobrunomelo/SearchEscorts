@@ -29,18 +29,18 @@ import java.io.ByteArrayOutputStream;
 
 public class ActivityGirlsRegister extends AppCompatActivity {
 
-    private GirlsDAO mGirlDAO;
-    private Girls mGirls;
+    GirlsDAO mGirlDAO;
+    Girls mGirls;
 
     EditText mEditTextEmail, mEditTextName, mEditTextInformation, mEditTextPhone, mEditTextAge;
     Switch mSwitchStatus;
     Button mButtonSaveGirl,buttonAlterGirl;
     TextView mTextViewUploadPhoto;
-    private ImageView mImageViewPhoto;
-    private Bitmap mImagemGaleria;
+    ImageView mImageViewPhoto;
+    Bitmap mImagemGaleria;
 
-    private final int SELECT_PICTURE = 1;
-    private final int PERMISSAO_REQUEST = 2;
+    final int SELECT_PICTURE = 1;
+    final int PERMISSAO_REQUEST = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,6 @@ public class ActivityGirlsRegister extends AppCompatActivity {
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //Intent intent = getIntent();
-
         //PERMISSÃO PARA O APP ACESSAR AS FOTOS
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -58,7 +56,6 @@ public class ActivityGirlsRegister extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSAO_REQUEST);
             }
         }
-
 
         mGirlDAO = new GirlsDAO(this);
         mGirls = new Girls();
@@ -119,22 +116,25 @@ public class ActivityGirlsRegister extends AppCompatActivity {
                     mGirls.setmStatus("false");
                 }
 
-                //INSERINDO IMAGEM NA BASE
+                //CONVERTENDO IMAGEM
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 mImagemGaleria.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 mGirls.setmImagem(stream.toByteArray());
 
-                Girls verificaGirl = mGirlDAO.getGirl(mGirls.getmEmail());
+                mGirlDAO.insert(mGirls);
+                Toast.makeText(getBaseContext(), R.string.mensage_added_girl, Toast.LENGTH_LONG).show();
+
+                /*Girls verificaGirl = mGirlDAO.getGirl(mGirls.getmEmail());
                 if (verificaGirl == null) {
                     mGirlDAO.insert(mGirls);
                     Toast.makeText(getBaseContext(), R.string.mensage_added_girl, Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getBaseContext(), R.string.mensage_not_added_girl, Toast.LENGTH_LONG).show();
-                }
+                }*/
 
 
-                //OnRefreshFormOK activity = (OnRefreshFormOK) getActivity();
-                //activity.refresh();
+                //InterfaceInformation activity = (InterfaceInformation) getActivity();
+                //activity.interfaceInformation();
 
                 //if (!isLandScape())
                 //   getActivity().finish();
@@ -176,7 +176,7 @@ public class ActivityGirlsRegister extends AppCompatActivity {
 }
 
 /*
-    public interface OnRefreshFormOK {
-        public void refresh();
+    public interface InterfaceInformation {
+        public void interfaceInformation();
     }*/
 

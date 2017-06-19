@@ -5,10 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 import android.renderscript.Sampler;
 
 import com.mobileprogramming.luxurygirl.model.Girls;
 
+import java.io.ByteArrayOutputStream;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +53,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
 
     //INSERT
     public void insert(Girls girls) {
-        /*String sql = "INSERT INTO Girls (name,age,information,contact,status) " +
-                "VALUES ('" + girls.getmName() + "','" + girls.getmAge() + "','" + girls.getmInformation() + "','" + girls.getmContact() + "','" + girls.getmStatus() + "');";
+        /*String sql = "INSERT INTO Girls (name,age,information,contact,status,imagem) VALUES ('" + girls.getmName() + "','" + girls.getmAge() + "','" + girls.getmInformation() + "','" + girls.getmContact() + "','" + girls.getmStatus() + "','" + girls.getmImagem() + "');";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(sql);
         db.close();*/
@@ -87,7 +88,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
             name = valueOf(db.update(TABELA, values, NAME + " = ?", new String[]{girls.getmName()}));
             db.insert(TABELA, null, values);
             db.close();
-        }else {
+        } else {
             values.put(EMAIL, girls.getmEmail());
             values.put(NAME, girls.getmName());
             values.put(AGE, girls.getmAge());
@@ -104,7 +105,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
 
     //DELETE
     public String delete(String email) {
-        String sql = "DELETE FROM '" + TABELA + "' WHERE '" + NAME + "' = '" + email + "';";
+        String sql = "DELETE FROM '" + TABELA + "' WHERE '" + EMAIL + "' = '" + email + "';";
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(sql);
         db.close();
@@ -114,7 +115,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
 
     //BUSCAR UMA GIRL
     public Girls getGirl(String email) {
-        String sql = "SELECT * FROM '" + TABELA + "' WHERE '" + NAME + "' = '" + email + "';";
+        String sql = "SELECT * FROM '" + TABELA + "' WHERE '" + EMAIL + "' = '" + email + "';";
 
         SQLiteDatabase sqLiteDb = getReadableDatabase();
         Cursor cursor = sqLiteDb.rawQuery(sql, null);
@@ -145,8 +146,8 @@ public class GirlsDAO extends SQLiteOpenHelper {
         String sql = "SELECT * FROM '" + TABELA + "';";
         SQLiteDatabase sqLiteDb = getReadableDatabase();
         Cursor cursor = sqLiteDb.rawQuery(sql, null);
-        List<Girls> girl = new ArrayList<Girls>();
 
+        List<Girls> girl = new ArrayList<Girls>();
         while (cursor.moveToNext()) {
             Girls girls = new Girls();
             girls.setmEmail(cursor.getString(cursor.getColumnIndex(EMAIL)));
@@ -158,9 +159,7 @@ public class GirlsDAO extends SQLiteOpenHelper {
             girls.setmImagem(cursor.getBlob(cursor.getColumnIndex("imagem")));
             girl.add(girls);
         }
-
         sqLiteDb.close();
-
         return girl;
     }
 }

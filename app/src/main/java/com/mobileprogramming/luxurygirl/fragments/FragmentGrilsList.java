@@ -4,8 +4,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,8 +41,7 @@ public class FragmentGrilsList extends Fragment {
 
         mListGirls = (ListView) view.findViewById(R.id.listViewGirls);
 
-        mGirls = addGirl();
-
+        mGirls = (ArrayList<Girls>) mGirlsDAO.getAllGirls();
         ArrayAdapter adapter = new GirlAdapter(getContext(), mGirls);
         mListGirls.setAdapter(adapter);
 
@@ -52,6 +49,21 @@ public class FragmentGrilsList extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 loadGirlInformation(mGirls.get(position));
+
+                /*FragmentManager manager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = manager.beginTransaction();
+                Fragment fragmentGirlsInformations = new FragmentGirlsInformations();
+                fragmentGirlsInformations = FragmentGirlsInformations.newInstance(mGirls.get(position));
+
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("girl", girl);
+                fragmentGirlsInformations.setArguments(mBundle);
+
+                fragmentTransaction.replace(R.id.fragment_girls_informations, fragmentGirlsInformations);
+                //fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();*/
+
+
             }
         });
 
@@ -62,36 +74,31 @@ public class FragmentGrilsList extends Fragment {
         return view;
     }
 
-    private ArrayList<Girls> addGirl() {
-        mListGirlDAO = (ArrayList<Girls>) mGirlsDAO.getAllGirls();
-
-        for (int j = 0; j < mListGirlDAO.size(); j++) {
-            mGirl.setmName(mListGirlDAO.get(j).getmName());
-            mGirl.setmAge(mListGirlDAO.get(j).getmAge());
-            mGirl.setmImagem(mListGirlDAO.get(j).getmImagem());
-            mGirls.add(mGirl);
-        }
-
-        return mGirls;
+    public interface InterfaceInformation {
+        public void interfaceInformation(Girls girl);
     }
 
     private void loadGirlInformation(Girls girl) {
-        FragmentManager manager = getActivity().getSupportFragmentManager();
+        /*FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
         Fragment fragmentGirlsInformations = new FragmentGirlsInformations();
-        if(girl != null){
-            Bundle mBundle = new Bundle();
-            mBundle.putSerializable("girl", girl);
-            fragmentGirlsInformations.setArguments(mBundle);
-        }
+        fragmentGirlsInformations = FragmentGirlsInformations.newInstance(girl);
+
+        /*Bundle mBundle = new Bundle();
+        mBundle.putSerializable("girl", girl);
+        fragmentGirlsInformations.setArguments(mBundle);
+
         fragmentTransaction.replace(R.id.fragment_girls_informations, fragmentGirlsInformations);
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
+
+        InterfaceInformation activity = (InterfaceInformation) getActivity();
+        activity.interfaceInformation(girl);
     }
 
-    public boolean isLandScape(){
+    public boolean isLandScape() {
         Configuration configuration = getResources().getConfiguration();
-        if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
             return true;
         return false;
     }

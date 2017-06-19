@@ -44,8 +44,6 @@ public class FragmentGirlsInformations extends Fragment {
     private ListView lvCompanions;
 */
 
-    public FragmentGirlsInformations() {
-    }
 
     @Nullable
     @Override
@@ -62,8 +60,19 @@ public class FragmentGirlsInformations extends Fragment {
         final Button buttonRemoveGirl = (Button) view.findViewById(R.id.buttonRemoveGirl);
 
         Bundle bundle = getArguments();
-        if (bundle != null) {
-            mGirl = (Girls) bundle.getSerializable("mListGirlDAO");
+        mGirl = (Girls) bundle.getSerializable("girl");
+
+        textViewNameInformation.setText(mGirl.getmName());
+        textViewAgeInformation.setText(mGirl.getmAge());
+        textViewInformationInformation.setText(mGirl.getmInformation());
+        textViewContactInformation.setText(mGirl.getmContact());
+
+        byte[] outImagem = mGirl.getmImagem();
+        ByteArrayInputStream imageStream = new ByteArrayInputStream(outImagem);
+        Bitmap imageBitmap = BitmapFactory.decodeStream(imageStream);
+        imageViewPhoto.setImageBitmap(imageBitmap);
+        /*if (bundle != null) {
+            mGirl = (Girls) bundle.getSerializable("girl");
 
             textViewNameInformation.setText(mGirl.getmName());
             textViewAgeInformation.setText(mGirl.getmAge());
@@ -74,7 +83,7 @@ public class FragmentGirlsInformations extends Fragment {
             ByteArrayInputStream imageStream = new ByteArrayInputStream(outImagem);
             Bitmap imageBitmap = BitmapFactory.decodeStream(imageStream);
             imageViewPhoto.setImageBitmap(imageBitmap);
-        }
+        }*/
 
         buttonRemoveGirl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +95,14 @@ public class FragmentGirlsInformations extends Fragment {
 
         return view;
     }
+    /*public static FragmentGirlsInformations newInstance(Girls girl) {
+        FragmentGirlsInformations fragment = new FragmentGirlsInformations();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("girl", girl);
+        fragment.setArguments(bundle);
+
+        return fragment;
+    }*/
 
     /*
     //CONFIGURAÇÃO SE LANDSCAPE

@@ -4,7 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageViewPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/colorPrimaryDark"
+            android:scaleType="centerCrop" />
+    </LinearLayout>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,18 +29,10 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp">
 
-            <ImageView
-                android:id="@+id/imageViewPhoto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -47,7 +51,8 @@
                         android:id="@+id/textViewNameInformation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@+id/textViewLabelName" />
+                        android:layout_marginLeft="@+id/textViewLabelName"
+                        android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -66,7 +71,8 @@
                         android:id="@+id/textViewAgeInformation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@+id/textViewLabelAge" />
+                        android:layout_marginLeft="@+id/textViewLabelAge"
+                        android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -91,7 +97,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@+id/textViewInformationInformation"
                             android:inputType="textMultiLine"
-                            android:maxLines="3" />
+                            android:maxLines="3"
+                            android:text="" />
                     </ScrollView>
                 </LinearLayout>
 
@@ -112,7 +119,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@+id/textViewLabelContact"
-                        android:autoLink="phone" />
+                        android:autoLink="phone"
+                        android:text="" />
 
                 </LinearLayout>
 
@@ -131,4 +139,7 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <include layout="@layout/toolbar" />
+
 </LinearLayout>

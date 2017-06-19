@@ -123,21 +123,6 @@ public class ActivityGirlsRegister extends AppCompatActivity {
 
                 mGirlDAO.insert(mGirls);
                 Toast.makeText(getBaseContext(), R.string.mensage_added_girl, Toast.LENGTH_LONG).show();
-
-                /*Girls verificaGirl = mGirlDAO.getGirl(mGirls.getmEmail());
-                if (verificaGirl == null) {
-                    mGirlDAO.insert(mGirls);
-                    Toast.makeText(getBaseContext(), R.string.mensage_added_girl, Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getBaseContext(), R.string.mensage_not_added_girl, Toast.LENGTH_LONG).show();
-                }*/
-
-
-                //InterfaceInformation activity = (InterfaceInformation) getActivity();
-                //activity.interfaceInformation();
-
-                //if (!isLandScape())
-                //   getActivity().finish();
             }
         });
     }
@@ -174,9 +159,4 @@ public class ActivityGirlsRegister extends AppCompatActivity {
     }
 
 }
-
-/*
-    public interface InterfaceInformation {
-        public void interfaceInformation();
-    }*/
 

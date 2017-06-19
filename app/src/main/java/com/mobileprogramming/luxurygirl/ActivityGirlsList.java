@@ -23,11 +23,4 @@ public class ActivityGirlsList extends AppCompatActivity{
         setSupportActionBar(toolbar);
     }
 
-    /*@Override
-    public void responde(Girls girl) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentGirlsInformations frag = (FragmentGirlsInformations)manager.findFragmentById(R.id.fragment_girls_informations);//findFragmentById(R.id.fragment_girls_informations); //(FragmentGirlsInformations)manager.findFragmentById(R.id.fragment_girls_informations);
-        //frag.change(girl);
-
-    }*/
 }

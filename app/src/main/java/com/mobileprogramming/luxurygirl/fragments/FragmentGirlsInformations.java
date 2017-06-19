@@ -19,10 +19,6 @@ import com.mobileprogramming.luxurygirl.R;
 
 import java.io.ByteArrayInputStream;
 
-/**
- * Created by italo on 17/05/2017.
- */
-
 public class FragmentGirlsInformations extends Fragment {
 
     private Girls mGirl;
@@ -31,14 +27,14 @@ public class FragmentGirlsInformations extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_girls_informations, container, false);
+        View view = inflater.inflate(R.layout.fragment_girls_informations,container,false);
 
-        final TextView textViewNameInformation = (TextView) view.findViewById(R.id.textViewNameInformation);
-        final TextView textViewAgeInformation = (TextView) view.findViewById(R.id.textViewAgeInformation);
-        final TextView textViewInformationInformation = (TextView) view.findViewById(R.id.textViewInformationInformation);
-        final TextView textViewContactInformation = (TextView) view.findViewById(R.id.textViewContactInformation);
-        final ImageView imageViewPhoto = (ImageView) view.findViewById(R.id.imageViewPhoto);
-        final Button buttonRemoveGirl = (Button) view.findViewById(R.id.buttonRemoveGirl);
+        TextView textViewNameInformation = (TextView) view.findViewById(R.id.textViewNameInformation);
+        TextView textViewAgeInformation = (TextView) view.findViewById(R.id.textViewAgeInformation);
+        TextView textViewInformationInformation = (TextView) view.findViewById(R.id.textViewInformationInformation);
+        TextView textViewContactInformation = (TextView) view.findViewById(R.id.textViewContactInformation);
+        ImageView imageViewPhoto = (ImageView) view.findViewById(R.id.imageViewPhoto);
+        Button buttonRemoveGirl = (Button) view.findViewById(R.id.buttonRemoveGirl);
 
         buttonRemoveGirl.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,20 +44,8 @@ public class FragmentGirlsInformations extends Fragment {
             }
         });
 
-        return view;
-    }
-
-    /*public void change(Girls girl) {
-        TextView textViewNameInformation = (TextView) getView().findViewById(R.id.textViewNameInformation);
-        TextView textViewAgeInformation = (TextView) getView().findViewById(R.id.textViewAgeInformation);
-        TextView textViewInformationInformation = (TextView) getView().findViewById(R.id.textViewInformationInformation);
-        TextView textViewContactInformation = (TextView) getView().findViewById(R.id.textViewContactInformation);
-        ImageView imageViewPhoto = (ImageView) getView().findViewById(R.id.imageViewPhoto);
-
-        //Resources res = getResources();
-        //String[] desc = res.getStringArray(R.array.descrip);
-        //text.setText(desc[girl]);
-
+        Bundle bundle = getArguments();
+            Girls girl = (Girls) bundle.getSerializable("girl");
         textViewNameInformation.setText(girl.getmName());
         textViewAgeInformation.setText(girl.getmAge());
         textViewInformationInformation.setText(girl.getmInformation());
@@ -70,13 +54,7 @@ public class FragmentGirlsInformations extends Fragment {
         ByteArrayInputStream imageStream = new ByteArrayInputStream(outImagem);
         Bitmap imageBitmap = BitmapFactory.decodeStream(imageStream);
         imageViewPhoto.setImageBitmap(imageBitmap);
-    }
 
-    //CONFIGURAÇÃO SE LANDSCAPE
-    public boolean isLandScape(){
-        Configuration configuration = getResources().getConfiguration();
-        if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-            return true;
-        return false;
-    }*/
+        return view;
+    }
 }

@@ -1,6 +1,5 @@
 package com.mobileprogramming.luxurygirl.fragments;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.mobileprogramming.luxurygirl.ActivityGirlsList;
 import com.mobileprogramming.luxurygirl.adapter.GirlAdapter;
 import com.mobileprogramming.luxurygirl.R;
 import com.mobileprogramming.luxurygirl.dao.GirlsDAO;
@@ -28,8 +26,6 @@ public class FragmentGrilsList extends Fragment {
     private ArrayList<Girls> mListGirlDAO;
     private Girls mGirl;
     private GirlsDAO mGirlsDAO;
-
-    ActivityGirlsList comunicador;
 
     @Nullable
     @Override
@@ -49,32 +45,21 @@ public class FragmentGrilsList extends Fragment {
         mListGirls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //comunicador.responde(mGirls.get(position));
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = manager.beginTransaction();
+                Fragment fragmentGirlsInformations = new FragmentGirlsInformations();
+
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("girl", mGirls.get(position));
+                fragmentGirlsInformations.setArguments(mBundle);
+
+                fragmentTransaction.replace(R.id.fragment_girls_informations, fragmentGirlsInformations);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
 
         return view;
-    }
-
-    /*@Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-    }*/
-
-    private void loadGirlInformation(Girls girl) {
-        FragmentManager manager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = manager.beginTransaction();
-        Fragment fragmentGirlsInformations = new FragmentGirlsInformations();
-        //fragmentGirlsInformations = FragmentGirlsInformations.newInstance(girl);
-
-        Bundle mBundle = new Bundle();
-        mBundle.putSerializable("girl", girl);
-        fragmentGirlsInformations.setArguments(mBundle);
-
-        fragmentTransaction.replace(R.id.fragment_girls_informations, fragmentGirlsInformations);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
     }
 
     @Override
@@ -82,5 +67,14 @@ public class FragmentGrilsList extends Fragment {
         super.onStart();
         mGirlsDAO.getAllGirls();
     }
+
+    /*
+    //CONFIGURAÇÃO SE LANDSCAPE
+    public boolean isLandScape(){
+        Configuration configuration = getResources().getConfiguration();
+        if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+            return true;
+        return false;
+    }*/
 
 }

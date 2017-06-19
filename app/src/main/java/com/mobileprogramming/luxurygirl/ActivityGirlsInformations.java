@@ -18,15 +18,4 @@ public class ActivityGirlsInformations extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
-
-    /*@Override
-    public void responde(Girls girl) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentGirlsInformations frag = (FragmentGirlsInformations)manager.findFragmentById(R.id.fragment_girls_informations);
-        //frag.change(girl);
-    }
-/*
-    public void loadGirls() {
-        mFragmentGirlsInformations.loadGirls();
-    }*/
 }

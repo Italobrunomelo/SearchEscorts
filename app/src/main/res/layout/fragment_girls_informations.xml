@@ -15,7 +15,7 @@
             android:layout_height="200dp"
             android:background="@color/colorPrimaryDark"
             android:scaleType="centerCrop"
-            android:src="@drawable/girls"/>
+            android:src="@null"/>
     </LinearLayout>
 
 
@@ -140,5 +140,6 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
 
 </LinearLayout>
